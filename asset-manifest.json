@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/eco/static/css/main.0d9b6506.chunk.css",
+    "main.css": "/eco/static/css/main.cf47b271.chunk.css",
     "main.js": "/eco/static/js/main.69979666.chunk.js",
     "main.js.map": "/eco/static/js/main.69979666.chunk.js.map",
     "runtime-main.js": "/eco/static/js/runtime-main.8f1bd731.js",
@@ -10,7 +10,7 @@
     "static/js/2.42087233.chunk.js.map": "/eco/static/js/2.42087233.chunk.js.map",
     "index.html": "/eco/index.html",
     "static/css/2.a2ab3232.chunk.css.map": "/eco/static/css/2.a2ab3232.chunk.css.map",
-    "static/css/main.0d9b6506.chunk.css.map": "/eco/static/css/main.0d9b6506.chunk.css.map",
+    "static/css/main.cf47b271.chunk.css.map": "/eco/static/css/main.cf47b271.chunk.css.map",
     "static/js/2.42087233.chunk.js.LICENSE.txt": "/eco/static/js/2.42087233.chunk.js.LICENSE.txt",
     "static/media/persik.ae9f0072.png": "/eco/static/media/persik.ae9f0072.png",
     "static/media/statistics.4a610f33.svg": "/eco/static/media/statistics.4a610f33.svg"
@@ -19,7 +19,7 @@
     "static/js/runtime-main.8f1bd731.js",
     "static/css/2.a2ab3232.chunk.css",
     "static/js/2.42087233.chunk.js",
-    "static/css/main.0d9b6506.chunk.css",
+    "static/css/main.cf47b271.chunk.css",
     "static/js/main.69979666.chunk.js"
   ]
 }
