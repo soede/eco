@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/eco/static/css/main.4de31c1b.chunk.css",
+    "main.css": "/eco/static/css/main.63474417.chunk.css",
     "main.js": "/eco/static/js/main.7d4ee25a.chunk.js",
     "main.js.map": "/eco/static/js/main.7d4ee25a.chunk.js.map",
     "runtime-main.js": "/eco/static/js/runtime-main.8f1bd731.js",
@@ -10,7 +10,7 @@
     "static/js/2.aefd0678.chunk.js.map": "/eco/static/js/2.aefd0678.chunk.js.map",
     "index.html": "/eco/index.html",
     "static/css/2.170ca112.chunk.css.map": "/eco/static/css/2.170ca112.chunk.css.map",
-    "static/css/main.4de31c1b.chunk.css.map": "/eco/static/css/main.4de31c1b.chunk.css.map",
+    "static/css/main.63474417.chunk.css.map": "/eco/static/css/main.63474417.chunk.css.map",
     "static/js/2.aefd0678.chunk.js.LICENSE.txt": "/eco/static/js/2.aefd0678.chunk.js.LICENSE.txt",
     "static/media/bottle.528839cc.svg": "/eco/static/media/bottle.528839cc.svg",
     "static/media/go.49daadcd.svg": "/eco/static/media/go.49daadcd.svg",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.8f1bd731.js",
     "static/css/2.170ca112.chunk.css",
     "static/js/2.aefd0678.chunk.js",
-    "static/css/main.4de31c1b.chunk.css",
+    "static/css/main.63474417.chunk.css",
     "static/js/main.7d4ee25a.chunk.js"
   ]
 }
