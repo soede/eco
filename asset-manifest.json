@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/eco/static/css/main.63474417.chunk.css",
-    "main.js": "/eco/static/js/main.7d4ee25a.chunk.js",
-    "main.js.map": "/eco/static/js/main.7d4ee25a.chunk.js.map",
+    "main.js": "/eco/static/js/main.dd11d6d0.chunk.js",
+    "main.js.map": "/eco/static/js/main.dd11d6d0.chunk.js.map",
     "runtime-main.js": "/eco/static/js/runtime-main.8f1bd731.js",
     "runtime-main.js.map": "/eco/static/js/runtime-main.8f1bd731.js.map",
     "static/css/2.170ca112.chunk.css": "/eco/static/css/2.170ca112.chunk.css",
@@ -12,7 +12,7 @@
     "static/css/2.170ca112.chunk.css.map": "/eco/static/css/2.170ca112.chunk.css.map",
     "static/css/main.63474417.chunk.css.map": "/eco/static/css/main.63474417.chunk.css.map",
     "static/js/2.aefd0678.chunk.js.LICENSE.txt": "/eco/static/js/2.aefd0678.chunk.js.LICENSE.txt",
-    "static/media/bottle.528839cc.svg": "/eco/static/media/bottle.528839cc.svg",
+    "static/media/bottle.fe890797.svg": "/eco/static/media/bottle.fe890797.svg",
     "static/media/go.49daadcd.svg": "/eco/static/media/go.49daadcd.svg",
     "static/media/logo.f19e643a.svg": "/eco/static/media/logo.f19e643a.svg",
     "static/media/persik.ae9f0072.png": "/eco/static/media/persik.ae9f0072.png",
@@ -23,6 +23,6 @@
     "static/css/2.170ca112.chunk.css",
     "static/js/2.aefd0678.chunk.js",
     "static/css/main.63474417.chunk.css",
-    "static/js/main.7d4ee25a.chunk.js"
+    "static/js/main.dd11d6d0.chunk.js"
   ]
 }
