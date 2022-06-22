@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/eco/static/css/main.d91293a2.chunk.css",
-    "main.js": "/eco/static/js/main.87e7b182.chunk.js",
-    "main.js.map": "/eco/static/js/main.87e7b182.chunk.js.map",
+    "main.js": "/eco/static/js/main.3bb94f6d.chunk.js",
+    "main.js.map": "/eco/static/js/main.3bb94f6d.chunk.js.map",
     "runtime-main.js": "/eco/static/js/runtime-main.8f1bd731.js",
     "runtime-main.js.map": "/eco/static/js/runtime-main.8f1bd731.js.map",
     "static/css/2.170ca112.chunk.css": "/eco/static/css/2.170ca112.chunk.css",
-    "static/js/2.b69543a9.chunk.js": "/eco/static/js/2.b69543a9.chunk.js",
-    "static/js/2.b69543a9.chunk.js.map": "/eco/static/js/2.b69543a9.chunk.js.map",
+    "static/js/2.8e4e6af4.chunk.js": "/eco/static/js/2.8e4e6af4.chunk.js",
+    "static/js/2.8e4e6af4.chunk.js.map": "/eco/static/js/2.8e4e6af4.chunk.js.map",
     "index.html": "/eco/index.html",
     "static/css/2.170ca112.chunk.css.map": "/eco/static/css/2.170ca112.chunk.css.map",
     "static/css/main.d91293a2.chunk.css.map": "/eco/static/css/main.d91293a2.chunk.css.map",
-    "static/js/2.b69543a9.chunk.js.LICENSE.txt": "/eco/static/js/2.b69543a9.chunk.js.LICENSE.txt",
+    "static/js/2.8e4e6af4.chunk.js.LICENSE.txt": "/eco/static/js/2.8e4e6af4.chunk.js.LICENSE.txt",
     "static/media/bottle-off.c807b96c.svg": "/eco/static/media/bottle-off.c807b96c.svg",
     "static/media/bottle-on.d8e35edd.svg": "/eco/static/media/bottle-on.d8e35edd.svg",
     "static/media/go.49daadcd.svg": "/eco/static/media/go.49daadcd.svg",
@@ -23,8 +23,8 @@
   "entrypoints": [
     "static/js/runtime-main.8f1bd731.js",
     "static/css/2.170ca112.chunk.css",
-    "static/js/2.b69543a9.chunk.js",
+    "static/js/2.8e4e6af4.chunk.js",
     "static/css/main.d91293a2.chunk.css",
-    "static/js/main.87e7b182.chunk.js"
+    "static/js/main.3bb94f6d.chunk.js"
   ]
 }
