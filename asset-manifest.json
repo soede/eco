@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/eco/static/css/main.40ad0862.chunk.css",
-    "main.js": "/eco/static/js/main.43c49ebb.chunk.js",
-    "main.js.map": "/eco/static/js/main.43c49ebb.chunk.js.map",
+    "main.js": "/eco/static/js/main.bff3f87e.chunk.js",
+    "main.js.map": "/eco/static/js/main.bff3f87e.chunk.js.map",
     "runtime-main.js": "/eco/static/js/runtime-main.8f1bd731.js",
     "runtime-main.js.map": "/eco/static/js/runtime-main.8f1bd731.js.map",
     "static/css/2.170ca112.chunk.css": "/eco/static/css/2.170ca112.chunk.css",
@@ -22,7 +22,7 @@
     "static/media/other-on.7a34143e.svg": "/eco/static/media/other-on.7a34143e.svg",
     "static/media/persik.ae9f0072.png": "/eco/static/media/persik.ae9f0072.png",
     "static/media/statistics.4a610f33.svg": "/eco/static/media/statistics.4a610f33.svg",
-    "static/media/tetra-off.e4a366b0.svg": "/eco/static/media/tetra-off.e4a366b0.svg",
+    "static/media/tetra-off.11835f34.svg": "/eco/static/media/tetra-off.11835f34.svg",
     "static/media/tetra-on.1ceed7c4.svg": "/eco/static/media/tetra-on.1ceed7c4.svg"
   },
   "entrypoints": [
@@ -30,6 +30,6 @@
     "static/css/2.170ca112.chunk.css",
     "static/js/2.de815555.chunk.js",
     "static/css/main.40ad0862.chunk.css",
-    "static/js/main.43c49ebb.chunk.js"
+    "static/js/main.bff3f87e.chunk.js"
   ]
 }
