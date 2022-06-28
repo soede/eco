@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/eco/static/css/main.36ce802d.chunk.css",
-    "main.js": "/eco/static/js/main.fb2953ed.chunk.js",
-    "main.js.map": "/eco/static/js/main.fb2953ed.chunk.js.map",
+    "main.js": "/eco/static/js/main.0a09bafe.chunk.js",
+    "main.js.map": "/eco/static/js/main.0a09bafe.chunk.js.map",
     "runtime-main.js": "/eco/static/js/runtime-main.8f1bd731.js",
     "runtime-main.js.map": "/eco/static/js/runtime-main.8f1bd731.js.map",
     "static/css/2.170ca112.chunk.css": "/eco/static/css/2.170ca112.chunk.css",
@@ -18,7 +18,8 @@
     "static/media/energy-on.514c8ebc.svg": "/eco/static/media/energy-on.514c8ebc.svg",
     "static/media/go.49daadcd.svg": "/eco/static/media/go.49daadcd.svg",
     "static/media/logo.f19e643a.svg": "/eco/static/media/logo.f19e643a.svg",
-    "static/media/other.408caebc.svg": "/eco/static/media/other.408caebc.svg",
+    "static/media/other-off.408caebc.svg": "/eco/static/media/other-off.408caebc.svg",
+    "static/media/other-on.7a34143e.svg": "/eco/static/media/other-on.7a34143e.svg",
     "static/media/persik.ae9f0072.png": "/eco/static/media/persik.ae9f0072.png",
     "static/media/statistics.4a610f33.svg": "/eco/static/media/statistics.4a610f33.svg",
     "static/media/tetra-off.da3c2aee.svg": "/eco/static/media/tetra-off.da3c2aee.svg",
@@ -29,6 +30,6 @@
     "static/css/2.170ca112.chunk.css",
     "static/js/2.de815555.chunk.js",
     "static/css/main.36ce802d.chunk.css",
-    "static/js/main.fb2953ed.chunk.js"
+    "static/js/main.0a09bafe.chunk.js"
   ]
 }
