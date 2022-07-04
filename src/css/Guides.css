@@ -1,0 +1,52 @@
+.tab-div-g{
+    width: 90%;
+}
+
+.panelHeader-g{
+    width: 100%;  
+}
+
+.card-g{
+
+    margin: 5px;
+    height: 64px;
+
+}
+
+.go-button-g{
+
+    width: 23px;
+    height: 23px;
+
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    margin-top: -11px;
+
+}
+
+.card-g{
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.titles-g{
+
+    height: 28px;
+
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    left: 68px;
+    color: #99A2AD;
+}
+
+
+.icon-g{
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    left: 16px;
+
+    
+}

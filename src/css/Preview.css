@@ -1,0 +1,162 @@
+.main-p{
+    display: block;
+    padding: 20px;
+    padding-bottom: 5%;
+    position: relative;
+    height: 100%;
+}
+.panel-p{
+    height: 100%;
+}
+
+.logo-p{
+   
+
+    width: 84px;
+    position: absolute; 
+    left: 50%;
+    margin-left: -42px;
+    top:40px;
+
+}
+
+.text-div-p{
+    text-align: center;
+    display: flex;
+    
+    flex-direction: column;
+    padding: 10px;
+    gap: 12px;
+
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    top: 120px;
+}
+
+.header-p{
+
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -ms-line-clamp: 1;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+   
+    
+
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    text-align: center;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.colortext-p{
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 0.0025em;
+
+    color: #51A0EF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+.discription-p{
+/* есо поможет тебе в этом */
+
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 0.0025em;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.benefits-p{
+    text-align: left;
+
+     
+
+
+
+    
+    flex-direction: column;
+    padding: 10px;
+    gap: 12px;
+
+    position: absolute;
+    left: 50%;
+    top: 220px;
+    transform: translate(-50%, 0%);
+    
+}
+
+.title-p{
+    position: absolute;
+    margin-top: auto;
+}
+
+.elements-p{
+
+}
+
+.elememt-p{
+    font-family: 'SF Pro Rounded';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.0025em;
+}
+
+.button-div-p{
+    position: relative;;
+    top: 400px;
+    margin-bottom: 10px;
+    bottom: 10px;
+  
+}
+
+
+.button-p{
+    
+    position: absolute;
+    height: 54px;
+    left: 8.97%;
+    right: 8.72%;
+    background-color: #2688EB;
+  
+  }

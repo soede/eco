@@ -1,0 +1,24 @@
+.tab-div-h{
+    width: 90%;
+}
+
+.panelHeader-h{
+    width: 100%;  
+}
+
+.card-h{
+    position: relative;
+}
+.tetless-h{
+    position: relative;
+    top: 110%;
+    left: 50px;
+}
+
+.closeHeadTitle{
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    margin-top: -0.625em;
+    color: #62A1E8;
+}
