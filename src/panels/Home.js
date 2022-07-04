@@ -5,10 +5,9 @@ import axios from 'axios';
 
 import { Panel, PanelHeader, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card  } from '@vkontakte/vkui';
 
-import '../css/Home.css';
+import '../css/Home.css'; 
 import Learning from './Learning';
 
-var tr = false;
 
 
 const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
@@ -29,8 +28,10 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 		{id: 12, height:48},
 	])
 
-	const [points, setPoints] = useState([])
+	const [points, setPoints] = useState([]) //пункты
 
+
+	const openCard = <h1 className='tetless-h'> капец</h1>;
 	const closeCard =(title) => {
 		return(
 			<div> <Title className='closeHeadTitle' level="1" weight="2"> {title} </Title></div>
@@ -66,15 +67,11 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 			&vk_user_id=${params.vk_user_id}
 			&sign=${params.sign}`
 
-
 			var lat =30.3172771559412; //тест координаты
 			var long =59.936348451648286;
 
 
-
-			const data = { "x": lat, "y": long };
-
-			try { //тот самый запрос
+			try {
 			
 				await axios.post(`https://showtime.app-dich.com/api/eco-hub/places?vk_access_token_settings=${params.vk_access_token_settings}
 				&vk_app_id=${params.vk_app_id}
@@ -91,7 +88,6 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 					y: long
 				  })
 				  .then(function (response) {
-					console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 					console.log(response.data.data);
 					setPoints(response.data.data)
 				  })
@@ -110,52 +106,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 
 
 
-			try{ //это я по приколу
-				
 
-				await console.log('эээээээээээээ' + params.sign)
-
-				const response = await fetch(`https://showtime.app-dich.com/api/eco-hub/info?vk_access_token_settings=${params.vk_access_token_settings}
-				&vk_app_id=${params.vk_app_id}
-				&vk_are_notifications_enabled=${params.vk_are_notifications_enabled}
-				&vk_is_app_user=${params.vk_is_app_user}
-				&vk_is_favorite=${params.vk_is_favorite}
-				&vk_language=${params.vk_language}
-				&vk_platform=${params.vk_platform}
-				&vk_ref=${params.vk_ref}
-				&vk_ts=${params.vk_ts}
-				&vk_user_id=${params.vk_user_id}
-				&sign=${params.sign}`)
-
-				await console.log(response)
-
-				const data = await response.json()
-
-				await console.log(data)
-
-
-
-
-
-				  
-
-	
-
-		
-			  }catch(error){
-				await console.log(error)
-		
-			  }
-
-
-			
-
-
-
-			setCardState([ ...cardState, { id: 3, height:48}])
-
-
-			await console.log(cardState)
 
 		  
 		}
@@ -164,18 +115,11 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 	
 	  }, [])
 
-			try{ //тут я применил скрипт по вычитанию растояния и кст работает как гугл карты
-				const fff = getDistanceFromLatLonInKm(30.3172771559412, 59.936348451648286, 30.302902150122915, 59.95046278457837 )
-
-				console.log('asasasasasasasasas' + fff)
-			}catch(error){
-				console.log(error)
-			}
-
-	
 			
+			const dist = getDistanceFromLatLonInKm(30.3172771559412, 59.936348451648286, 30.302902150122915, 59.95046278457837 ) //расстояние между точками
 
-			function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) { //считает дистанцию между точками
+
+			function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 				var R = 6371; // Radius of the earth in km
 				var dLat = deg2rad(lat2-lat1);  // deg2rad below
 				var dLon = deg2rad(lon2-lon1); 
@@ -194,52 +138,8 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 			  }
 
 
-			  
-
-
-	  
-
-
-	  function resizeThis (idCard) {
-		
-	  }
-
-	  
-		const updateCardState = (idCard) =>{
-
-			console.log("высота" + idCard.height)
-			
-			
-
-
-			
-		}
-		
-
-
-
-	
-
-	
-	try{
-		if(points){
-			console.log(points[0].Category)
-		
-		}
-	}catch(e){
-		console.log(e)
-	}
-
-	
-	console.warn(points)
-
-
 	return(
 		<Panel id={id}>
-
-			
-	
-
 
 			  <PanelHeader className='panelHeader-h'>
 				<Tabs className='tab-div-h'>
@@ -282,7 +182,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 				return(
 					
 					<Card className="card-h" onClick={()=>{
-						console.log('v' +cardState[index].height)
+						
 						cardState[index].height = 128;
 						
 	
