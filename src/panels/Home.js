@@ -31,9 +31,6 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 
 	const [points, setPoints] = useState([])
 
-	var shelli = 'превет';
-
-	const openCard = <h1 className='tetless-h'> капец</h1>;
 	const closeCard =(title) => {
 		return(
 			<div> <Title className='closeHeadTitle' level="1" weight="2"> {title} </Title></div>
@@ -70,16 +67,14 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 			&sign=${params.sign}`
 
 
-			var lat =30.3172771559412;
+			var lat =30.3172771559412; //тест координаты
 			var long =59.936348451648286;
 
-			console.log( lat + ' и ' + long);
 
 
+			const data = { "x": lat, "y": long };
 
-			const data = await { "x": lat, "y": long };
-
-			try {
+			try { //тот самый запрос
 			
 				await axios.post(`https://showtime.app-dich.com/api/eco-hub/places?vk_access_token_settings=${params.vk_access_token_settings}
 				&vk_app_id=${params.vk_app_id}
@@ -99,7 +94,6 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 					console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 					console.log(response.data.data);
 					setPoints(response.data.data)
-					shelli = response.data.data.Category
 				  })
 				  .catch(function (error) {
 					console.log(error);
@@ -116,7 +110,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 
 
 
-			try{
+			try{ //это я по приколу
 				
 
 				await console.log('эээээээээээээ' + params.sign)
@@ -170,7 +164,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 	
 	  }, [])
 
-			try{
+			try{ //тут я применил скрипт по вычитанию растояния и кст работает как гугл карты
 				const fff = getDistanceFromLatLonInKm(30.3172771559412, 59.936348451648286, 30.302902150122915, 59.95046278457837 )
 
 				console.log('asasasasasasasasas' + fff)
@@ -181,7 +175,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 	
 			
 
-			function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+			function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) { //считает дистанцию между точками
 				var R = 6371; // Radius of the earth in km
 				var dLat = deg2rad(lat2-lat1);  // deg2rad below
 				var dLon = deg2rad(lon2-lon1); 
@@ -219,9 +213,6 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 
 
 			
-			
-			console.log('asas')
-
 		}
 		
 
@@ -232,7 +223,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 	
 	try{
 		if(points){
-			console.log('ggggggg' + points[0].Category)
+			console.log(points[0].Category)
 		
 		}
 	}catch(e){
