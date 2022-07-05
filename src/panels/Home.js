@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 import bridge from '@vkontakte/vk-bridge';
 import axios from 'axios';
 
-import { Panel, PanelHeader, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card  } from '@vkontakte/vkui';
+import { Panel, ScreenSpinner, PanelHeader, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card  } from '@vkontakte/vkui';
 
 import '../css/Home.css'; 
 import Learning from './Learning';
 
+import CountDistance from '../tools/CountDistance';
+
 
 
 const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
+
+	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
 	const [cardState, setCardState] = useState([ //пример бллл
 		{id: 0, height:48},
@@ -52,7 +56,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 
 			const params = await bridge.send("VKWebAppGetLaunchParams");
 
-			const userLocation = await bridge.send("VKWebAppGetGeodata");
+			
 
 
 			const url = `https://showtime.app-dich.com/api/eco-hub/places?vk_access_token_settings=${params.vk_access_token_settings}
@@ -67,42 +71,44 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 			&vk_user_id=${params.vk_user_id}
 			&sign=${params.sign}`
 
-			var lat =30.3172771559412; //тест координаты
-			var long =59.936348451648286;
+			var lat = 30.3172771559412; //тест координаты
+			var long = 59.936348451648286;
 
 
-			try {
 			
-				await axios.post(`https://showtime.app-dich.com/api/eco-hub/places?vk_access_token_settings=${params.vk_access_token_settings}
-				&vk_app_id=${params.vk_app_id}
-				&vk_are_notifications_enabled=${params.vk_are_notifications_enabled}
-				&vk_is_app_user=${params.vk_is_app_user}
-				&vk_is_favorite=${params.vk_is_favorite}
-				&vk_language=${params.vk_language}
-				&vk_platform=${params.vk_platform}
-				&vk_ref=${params.vk_ref}
-				&vk_ts=${params.vk_ts}
-				&vk_user_id=${params.vk_user_id}
-				&sign=${params.sign}`, {
-					x: lat,
-					y: long
-				  })
-				  .then(function (response) {
-					console.log(response.data.data);
-					setPoints(response.data.data)
-				  })
-				  .catch(function (error) {
-					console.log(error);
-				  });
+			
+			await axios.post(`https://showtime.app-dich.com/api/eco-hub/places?vk_access_token_settings=${params.vk_access_token_settings}
+			&vk_app_id=${params.vk_app_id}
+			&vk_are_notifications_enabled=${params.vk_are_notifications_enabled}
+			&vk_is_app_user=${params.vk_is_app_user}
+			&vk_is_favorite=${params.vk_is_favorite}
+			&vk_language=${params.vk_language}
+			&vk_platform=${params.vk_platform}
+			&vk_ref=${params.vk_ref}
+			&vk_ts=${params.vk_ts}
+			&vk_user_id=${params.vk_user_id}
+			&sign=${params.sign}`, {
+				x: lat,
+				y: long
+				})
+				.then(function (response) {
+					console.warn('ss' + response.data.data);
+					setPoints(response.data.data);
+				})
+				.catch(function (error) {
+					console.warn(error);
+				});
 
 				  
 			 
 
 				
 			
-			} catch (error) {
-			console.error('Ошибка:', error);
-			}
+			
+
+
+			await setPopout(null);
+			
 
 
 
@@ -116,36 +122,18 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 	  }, [])
 
 			
-			const dist = getDistanceFromLatLonInKm(30.3172771559412, 59.936348451648286, 30.302902150122915, 59.95046278457837 ) //расстояние между точками
+	
 
-
-			function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-				var R = 6371; // Radius of the earth in km
-				var dLat = deg2rad(lat2-lat1);  // deg2rad below
-				var dLon = deg2rad(lon2-lon1); 
-				var a = 
-				  Math.sin(dLat/2) * Math.sin(dLat/2) +
-				  Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-				  Math.sin(dLon/2) * Math.sin(dLon/2)
-				  ; 
-				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-				var d = R * c; // Distance in km
-				return d;
-			  }
-			  
-			function deg2rad(deg) {
-				return deg * (Math.PI/180)
-			  }
 
 
 	return(
-		<Panel id={id}>
+		<Panel id={id} popout={popout}>
 
 			  <PanelHeader className='panelHeader-h'>
 				<Tabs className='tab-div-h'>
 				<TabsItem
 					selected={true}>
-					Пункты
+					Пунктыd
               	</TabsItem>
 					<TabsItem
 						onClick={go}
@@ -165,7 +153,7 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn }) => {
 	
 			<div style={{ padding: 20 }}>
 				<Title level="1" style={{ marginBottom: 16 }}>
-					Список пунктов рядомs
+					Список пунктов рядом
 				</Title>
 			</div>
 
