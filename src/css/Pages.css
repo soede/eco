@@ -11,3 +11,39 @@
 }
 
 
+.gradient{
+	height: 100%;
+}
+
+.scroll{
+	display: inline-block;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	
+}
+
+.itemCell{
+	margin-left: 10px;
+	border-radius:30px; 
+}
+
+.llll{
+	border-radius:30px;
+	width: 83px;
+	
+}
+
+.forScroll{
+	padding: 1px;
+	border-radius:30px; 
+}
+
+.titleCell{
+	text-align: center
+	
+}
+
+.headerPage{
+    color: '#62A1E8';
+}

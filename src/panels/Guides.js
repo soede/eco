@@ -48,7 +48,10 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 		<PanelHeader className='panelHeader-g'>
 				<Tabs className='tab-div-g'>
             		<TabsItem
-						onClick={go}
+						onClick={(e)=>{
+							go(e);
+							
+						}} 
 						data-to="home">
 						Пункты
             		</TabsItem>
@@ -69,7 +72,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 			<CardGrid size="l">
 			<Card onClick={(event)=>{
 					go(event);
-					restatePageId(1);
+					restatePageId(0);
 				}} data-to="pages" className="card-g" mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon24Cards2Outline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -81,7 +84,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(2);
+					restatePageId(1);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<BottleOff className='icon-g' width={36} height={36} />
@@ -92,7 +95,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(3);
+					restatePageId(2);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28TshirtOutline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -103,7 +106,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(4);
+					restatePageId(3);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28AppleOutline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -114,7 +117,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(5);
+					restatePageId(4);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28GridLayoutOutline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -124,7 +127,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 				</Card>
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(6);
+					restatePageId(5);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28LightbulbOutline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -135,7 +138,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(7);
+					restatePageId(6);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28CubeBoxOutline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -146,7 +149,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(8);
+					restatePageId(7);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28MotorcycleOutline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -157,7 +160,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(9);
+					restatePageId(8);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28WasherOutline className='icon-g' fill="#99A2AD" width={36} height={36} />
@@ -168,7 +171,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(10);
+					restatePageId(9);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<Icon28WarningTriangleOutline className='icon-g' fill="#62A1E8" width={36} height={36} />
@@ -179,7 +182,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 				
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(11);
+					restatePageId(10);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<TetraOff className='icon-g' width={36} height={36} />
@@ -190,7 +193,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(12);
+					restatePageId(11);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<EnergyOff className='icon-g' width={36} height={36} />
@@ -202,7 +205,7 @@ const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePage
 
 				<Card onClick={(event)=>{
 					go(event);
-					restatePageId(13);
+					restatePageId(12);
 				}} data-to="pages" className="card-g"  mode="shadow">
 				<div style={{ height: 60}}>
 				<OtherOff className='icon-g' width={36} height={36} fill='#62A1E8'/>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
+import axios from 'axios';
+
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
@@ -10,23 +12,23 @@ import Preview from './panels/Preview';
 import Guides from './panels/Guides'
 import Learning from './panels/Learning';
 import Pages from './learnings/Pages';
+import MapPanel from './panels/MapPanel'
 
 
 
 const App = (first) => {
-	const [scheme, setScheme] = useState('bright_light')
-	const [activePanel, setActivePanel] = useState('');
+	const [scheme, setScheme] = useState('bright_light') //тема
+	const [activePanel, setActivePanel] = useState(''); //панель
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-	const [tabState, setTabState] = useState("points");
-	const [platform, setPlatform] = useState(null);
-	const [pageId, setPageId] = useState(null);
-	const [learn, setLearn] = useState([]);
-	const [firstStart, setFirstStart] = useState(true);
+	const [tabState, setTabState] = useState("points"); //состояние tab
+	const [platform, setPlatform] = useState(null); //хз
+	const [pageId, setPageId] = useState(null); 
+	const [learn, setLearn] = useState([]); 
+	const [firstStart, setFirstStart] = useState(true); //первый запуск
+	const [points, setPoints] = useState([]) //пункты
+	const [openPoint, setOpenPoint] = useState([]) //координаты на открываемый пункт
 	
-	
-	
-
 	useEffect(() => {
 
 		bridge.subscribe(({ detail: { type, data }}) => {
@@ -39,9 +41,39 @@ const App = (first) => {
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			const platformInfo = await bridge.send('VKWebAppGetClientVersion');
-			console.log('sdfsasd' + platformInfo.platform)
 			setPlatform(platformInfo.platform)
 			setUser(user);
+
+			
+
+			var lat = 30.3172771559412; //тест координаты
+			var long = 59.936348451648286;
+
+
+			
+			
+			await axios.post(`https://showtime.app-dich.com/api/eco-hub/places${window.location.search}`, {
+				x: lat,
+				y: long
+				})
+				.then(async function (response) {
+
+					
+					console.warn(response.data.data); 
+					await setPoints(response.data.data);
+					
+
+					
+				})
+				.catch(function (error) {
+					console.warn(error);
+				});
+
+				
+
+				  
+			 
+
 
 
 			const first = await (await bridge.send('VKWebAppStorageGet', {keys: ['onBoard']})).keys[0].value
@@ -88,7 +120,7 @@ const App = (first) => {
 			
 			 
 
-			 await setPopout(null);
+			 
 			
 
 
@@ -126,6 +158,11 @@ const App = (first) => {
 
 	}
 
+
+	const goTo = (to) => {
+		setActivePanel(to);
+	};
+
 	
 
 	const go = (e) => {
@@ -142,11 +179,11 @@ const App = (first) => {
 								<Statistics id='statistics' go={go} restateFirst={restateFirst} />
 								<Preview id='preview' go={go} />
 								<Persik id='persik' go={go} />
-								<Home id='home' fetchedUser={fetchedUser} go={go} restateTabState={restateTabState} getTabState={tabState} learn={learn} />
-								
+								<Home id='home' fetchedUser={fetchedUser} go={go} restateTabState={restateTabState} getTabState={tabState} learn={learn} points={points} setPopout={setPopout} setOpenPoint={setOpenPoint} restatePageId={restatePageId} />
 								<Guides id='guides' fetchedUser={fetchedUser} go={go} restateTabState={restateTabState} getTabState={tabState} restatePageId={restatePageId} learn={learn}/>
 								<Learning id='learning' go={go} />
-								<Pages id='pages' go={go} platform={platform} pageId={pageId} restatePageId={restatePageId} />
+								<Pages id='pages' go={go} platform={platform} pageId={pageId} restatePageId={restatePageId}/>
+								<MapPanel id='mapPanel' go={go} points={points} openPoint={openPoint} goTo={goTo}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

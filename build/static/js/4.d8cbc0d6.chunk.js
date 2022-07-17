@@ -1,2 +1,0 @@
-(this["webpackJsonpmini-app"]=this["webpackJsonpmini-app"]||[]).push([[4],{199:function(i,p,a){"use strict";a.r(p);var n=a(196),s=a(197),t=a(198);n.init(),n.add(s),n.add(t),p.default=n}}]);
-//# sourceMappingURL=4.d8cbc0d6.chunk.js.map

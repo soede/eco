@@ -8,17 +8,133 @@
 
 .card-h{
     position: relative;
-}
-.tetless-h{
-    position: relative;
-    top: 110%;
-    left: 50px;
+    border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 .closeHeadTitle{
     position: absolute;
     left: 5%;
+    right: 10%;
     top: 50%;
     margin-top: -0.625em;
     color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.openHeadTitle{
+    position: absolute;
+    left: 5%;
+    right: 10%;
+    top: 13%;
+    margin-top: -0.625em;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.distanceToPointOpen{
+    position: absolute;
+    
+    right: 15%;
+    top: 13%;
+    margin-top: -0.625em;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.distanceToPointClose{
+    position: absolute;
+    
+    right:15%;
+    top: 50%;
+    margin-top: -0.625em;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.chevronUpIcon{/*иконки*/
+    position: absolute;
+    right: 5%;
+    top: 13%;
+    margin-top: -14px;
+    color: #62A1E8;
+}
+
+.chevronDownIcon{ /*иконки*/
+    position: absolute;
+    right: 5%; 
+    top: 50%;
+    margin-top: -14px;
+    color: #62A1E8;
+
+}
+
+.openAddressHead{
+    position: absolute;
+    left: 5%;
+    right: 10%;
+    top: 32%;
+    margin-top: -12px;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+.openAddress{
+    position: absolute;
+    left: 5%;
+    right: 10%;
+    top: 42%;
+    margin-top: -0.625em;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+.openTakeHead{
+    position: absolute;
+    left: 5%;
+    right: 10%;
+    top: 52%;
+    margin-top: -0.625em;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.openTake{
+    position: absolute;
+    left: 5%;
+    right: 10%;
+    top: 62%;
+    margin-top: -0.625em;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.buttonLocation-h{
+    position: absolute;
+    right: 5%;
+    top: 75%;
+    color: #62A1E8;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+
+/*items*/
+.itemTab-h{
+    margin: 12px;
 }

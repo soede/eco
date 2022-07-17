@@ -26,7 +26,8 @@
     "eruda-dom": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-wrapper-mapkitjs": "^0.1.3"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
