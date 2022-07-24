@@ -45,7 +45,7 @@ const Pages = ({ id, go, platform, pageId, restatePageId, learn}) => {
     const [select, setSelect] = useState(0)
     var [itFirstStart, setFirstStart] = useState(true)
     
-    var f = true
+    var firstStarting = true
 
 
     
@@ -54,9 +54,8 @@ const Pages = ({ id, go, platform, pageId, restatePageId, learn}) => {
 
     async function updatePage(to){
         await setFirstStart(false)
-        f= false
-        !f && setSelect(to)&&restatePageId(to)
-        console.log(availablePages)
+        firstStarting= false
+        !firstStarting && setSelect(to)&&restatePageId(to) 
     }
 
 
@@ -67,19 +66,15 @@ const Pages = ({ id, go, platform, pageId, restatePageId, learn}) => {
 
 
 
-        <PanelHeader left={<PanelHeaderBack onClick={go} data-to='guides' />}className='ph-paper'> Гайды </PanelHeader>
+        <PanelHeader left={<PanelHeaderBack onClick={go} data-to='home' />}className='ph-paper'> Гайды </PanelHeader>
 
-                    <Gradient style={{height: 60}}>
+   
 
                     <Tabs mode="buttons" className='tab-div-p'>
-                    <HorizontalScroll getScrollToLeft= '1200'>
+                    <HorizontalScroll getScrollToLeft={(i) => i - 120}
+            			getScrollToRight={(i) => i + 120}>
 
-                    {iconsList(pageId).map((item, index)=>{
-
-                            
-                        
-                        
-                        console.log('sss' + index )
+                    {iconsList(pageId).map((item, index)=>{ 
                         return(
                             <HorizontalCell>
                         <TabsItem 
@@ -88,7 +83,7 @@ const Pages = ({ id, go, platform, pageId, restatePageId, learn}) => {
                                 
                                 }}
                             selected={select ===index}>
-                           {  item[1] } 
+                           { select === index? item[2]:item[1] } 
                         </TabsItem>
                         </HorizontalCell>
                         )
@@ -101,7 +96,6 @@ const Pages = ({ id, go, platform, pageId, restatePageId, learn}) => {
 
 
                 <div>{availablePages.map((item, index)=>{
-                    console.log('adadadadad' + index)
 
                     if(itFirstStart){
                         if(0 ===index){
@@ -121,9 +115,7 @@ const Pages = ({ id, go, platform, pageId, restatePageId, learn}) => {
 
              
 
-
-                </Gradient>
-			
+ 
                 
 	
 	

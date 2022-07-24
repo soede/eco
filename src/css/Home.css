@@ -1,9 +1,31 @@
 .tab-div-h{
     width: 90%;
+    
+    transition: all 400ms;
 }
 
 .panelHeader-h{
     width: 100%;  
+}
+
+.openCardDiv{
+
+    height: 300px; /*анекдот про тракториста*/
+
+    
+    
+    transition: all 400ms;
+
+}
+
+.closeCardDiv{
+
+    height: 64px; 
+
+    
+    
+    transition: all 400ms;
+    
 }
 
 .card-h{
@@ -77,33 +99,73 @@
 
 }
 
+.openAddressHeadDiv{
+    position: absolute;
+    left: 6%;
+    right: 10%;
+    top: 32%; 
+}
+
 .openAddressHead{
     position: absolute;
-    left: 5%;
+    left: 24px;
     right: 10%;
     top: 32%;
     margin-top: -12px;
-    color: #62A1E8;
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
 }
-.openAddress{
+
+.adressDiv{
     position: absolute;
     left: 5%;
     right: 10%;
-    top: 42%;
+    top: 37%;
+    margin: 5px;
+}
+
+.adressIcon{
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    margin-top: -10px;
+}
+.openAddress{
+    display: inline-block;
+    text-align: center;
+    
     margin-top: -0.625em;
-    color: #62A1E8;
+    color: #99A2AD;
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
 }
 .openTakeHead{
     position: absolute;
-    left: 5%;
+    left: 24px;
     right: 10%;
     top: 52%;
+    margin-top: -0.625em; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.openTakeHeadDiv{
+    position: absolute;
+    left: 6%;
+    right: 10%;
+    top: 52%;
+}
+
+.openTake{
+    height: 24px;
+    width:90px ;
+    position: absolute;
+    left: 40%;
+    right: 40%;
+    top: 50%;
     margin-top: -0.625em;
     color: #62A1E8;
     text-overflow: ellipsis;
@@ -111,16 +173,25 @@
     overflow: hidden;
 }
 
-.openTake{
+.openTakeText{ 
+    margin: 5px;
+    display: inline;
+    cursor: default;
+}
+
+.openTakeDiv{
+   
     position: absolute;
-    left: 5%;
-    right: 10%;
-    top: 62%;
-    margin-top: -0.625em;
-    color: #62A1E8;
-    text-overflow: ellipsis;
-    white-space: nowrap; 
-    overflow: hidden;
+    width: 300px;
+    top: 58%;
+    left: 5%; 
+}
+
+ 
+.openTakeCard{ 
+    padding: 5px;
+    margin: 2px;
+    
 }
 
 .buttonLocation-h{
@@ -131,10 +202,40 @@
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
+    border-radius: 12px;
 }
 
 
 /*items*/
+.takeGroup{
+    margin-top: 20px;
+}
 .itemTab-h{
     margin: 12px;
+}
+
+
+.titleCell{
+    width: 90px;
+}
+
+.itemCell{ 
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cardScroll-h{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    
+    
+    border-radius: 20px;
+}
+
+.scrollDiv-h{
+    margin-top: 10%;
 }

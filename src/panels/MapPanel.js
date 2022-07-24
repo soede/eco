@@ -17,51 +17,7 @@ import { Icon28ChevronDownOutline, Icon28ChevronUpOutline, Icon28LocationMapOutl
 
 
 const MapPanel = ({ id, go, points, openPoint, goTo,  }) => {
-	
-
-
-
-
-
-	
-
-	useEffect(() =>{
-    
-		const fetchData = async() =>{
-
-			await console.log('xxxx' + openPoint)
-
-			
-
-
-			
-			
-			
-
-
-
-
-		  
-		}
-
-
-		
-	
-		fetchData()
-	
-	  }, [])
-
-
-
-
-
-	  
-	  
-			
-	
-
-	  
-
+	 
 
 	return(
 		<Panel id={id}>
@@ -79,9 +35,7 @@ const MapPanel = ({ id, go, points, openPoint, goTo,  }) => {
 			        {openPoint.map((item)=>{
 					var emoji = EmojiDefine
 						return(
-							<Marker glyphText={EmojiDefine(item.Category)} title={item.Category} subtitle={item.Objects[0].properties.content_text} onClick={()=>{
-								goTo('home')
-							}} color="#fff" longitude={item.Objects[0].geometry.coordinates[0]}
+							<Marker glyphText={EmojiDefine(item.Category)} title={item.Category} subtitle={item.Objects[0].properties.content_text} color="#fff" longitude={item.Objects[0].geometry.coordinates[0]}
 				        		latitude={item.Objects[0].geometry.coordinates[1]} />
 						)
 					})}

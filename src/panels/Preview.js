@@ -32,7 +32,7 @@ const Preview = props => (
 					<SimpleCell
 					disabled='false'
 					before={<Icon24PlaceOutline />}>
-						<Title className='element-p' level="3"> Мы поможем найти ближайший<br/>
+						<Title className='element-p' level="3" weight="3"> Мы поможем найти ближайший<br/>
 						 пункт переработки</Title>
 					</SimpleCell>
 
@@ -40,7 +40,7 @@ const Preview = props => (
 					disabled='false'
 					before={<Icon24DoneOutline />}
 					>
-					<Title aria-multiline='true' className='element-p'  level="3"> За пару кликов Вы узнаете<br/> как
+					<Title aria-multiline='true' className='element-p' level="3"> За пару кликов Вы узнаете<br/> как
 					 правильно сдать мусор</Title>
 					</SimpleCell>
 
@@ -60,7 +60,7 @@ const Preview = props => (
 		<div className='button-div-p'>
 		<Button
 				onClick={props.go} 
-				data-to="home"
+				data-to="getLoc"
 				className='button-p'
 				appearance='accent'
 				size='l'

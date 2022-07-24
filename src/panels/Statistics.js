@@ -9,21 +9,21 @@ import '../css/Statistics.css';
 
 
 
-const Statistics = ({ id, go, restateFirst}) => {
+const Statistics = ({ id, go, restateFirst, setPopout}) => {
 
 
-
+	setPopout(null);
 	
 	const setFirst= () =>{
 
-
+		 
 			
 
 
 
 		bridge.send("VKWebAppStorageSet", {
 			key: "onBoard",
-			value: "false"
+			value: "true"
 		});
 
 		restateFirst(false)

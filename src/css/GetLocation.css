@@ -1,0 +1,53 @@
+.title-get{
+    position: absolute;
+    top:33%;
+    color: #62A1E8;
+    text-align: center;
+    width: 100%;
+    
+    position: absolute;               /* 2 */
+    left: 50%;                         /* 3 */
+    transform: translate( -50%, 0)
+    
+}
+
+
+.discription-get{
+    position: absolute;
+    top: 40%;
+    color: #99A2AD;
+    
+    text-align: center;
+}
+
+.mainIcon-get{
+    position: absolute;
+    top: 18%;
+    color: #62A1E8;
+
+    left: 50%;
+    margin-left: -32px;
+}
+
+.mainButton-get{
+    position: absolute;
+    height: 54px;
+    left: 8.97%;
+    right: 8.72%;
+    background-color: #2688EB;
+  
+    
+    bottom: 84px;
+    
+  
+  }
+
+.notNowButton{
+    position: absolute; 
+    left: 8.97%;
+    right: 8.72%;
+    
+    bottom: 23px;
+  
+
+}
