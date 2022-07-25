@@ -16,12 +16,12 @@ import EmojiDefine from '../lists/EmojiDefine';
 import { Icon28ChevronDownOutline, Icon28ChevronUpOutline, Icon28LocationMapOutline} from '@vkontakte/icons'; 
 
 
-const MapPanel = ({ id, go, points, openPoint, goTo,  }) => {
+const MapPanel = ({ id, go, points, openPoint, goTo, }) => {
 	 
 
 	return(
 		<Panel id={id}>
-              <PanelHeader left={<PanelHeaderBack onClick={go} data-to='guides' />}className='ph-paper'> Пункты </PanelHeader>
+              <PanelHeader left={<PanelHeaderBack onClick={go} data-to='home' />}className='ph-paper'> Пункты </PanelHeader>
 
 
 

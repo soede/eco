@@ -5,8 +5,7 @@ import axios from 'axios';
 
 import { Panel, ScreenSpinner, ButtonGroup, HorizontalCell, HorizontalScroll, PanelHeader, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card, Text, Gradient  } from '@vkontakte/vkui';
 
-import '../css/Home.css'; 
-import Learning from './Learning';
+import '../css/Home.css';  
 
 import CountDistance from '../tools/CountDistance'; //расчет дистанции
 import UnitsDefine from '../tools/UnitsDefine'; //определение ед. измерения
@@ -17,7 +16,7 @@ import { Icon28LocationOutline, Icon28ChevronDownOutline, Icon28ChevronUpOutline
 import PagesTab from '../learnings/Pages';
 
 
-const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, accessGeo }) => {
+const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, accessGeo }) => {
 	
 	
 	const [cardInfo, setCardInfo] =useState();
@@ -34,13 +33,13 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn, points
 
 	useEffect(() => {
 
-		const loler = () =>{
+		const sortPoints = () =>{
 			points.map((item, index)=>{
 				points[index].open = false;  
 			})
 		}
 	  
-		loler()
+		sortPoints()
 
  
 		async function fetchData() {
@@ -227,6 +226,9 @@ const Home = ({ id, go, fetchedUser, restateTabState, getTabState, learn, points
 			})}
 
     	</CardGrid>  
+
+
+		
 		</Panel>
 	);
 }

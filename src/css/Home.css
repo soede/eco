@@ -39,8 +39,7 @@
     left: 5%;
     right: 10%;
     top: 50%;
-    margin-top: -0.625em;
-    color: #62A1E8;
+    margin-top: -0.625em; 
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
@@ -51,8 +50,7 @@
     left: 5%;
     right: 10%;
     top: 13%;
-    margin-top: -0.625em;
-    color: #62A1E8;
+    margin-top: -0.625em; 
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
@@ -103,14 +101,14 @@
     position: absolute;
     left: 6%;
     right: 10%;
-    top: 32%; 
+    top: 26%; 
 }
 
 .openAddressHead{
     position: absolute;
     left: 24px;
     right: 10%;
-    top: 32%;
+    top: 26%;
     margin-top: -12px;
     text-overflow: ellipsis;
     white-space: nowrap; 
@@ -121,7 +119,7 @@
     position: absolute;
     left: 5%;
     right: 10%;
-    top: 37%;
+    top: 31%;
     margin: 5px;
 }
 
@@ -156,7 +154,7 @@
     position: absolute;
     left: 6%;
     right: 10%;
-    top: 52%;
+    top: 46%;
 }
 
 .openTake{
@@ -183,7 +181,7 @@
    
     position: absolute;
     width: 300px;
-    top: 58%;
+    top: 52%;
     left: 5%; 
 }
 
@@ -238,4 +236,14 @@
 
 .scrollDiv-h{
     margin-top: 10%;
+}
+
+
+.tryAgainDiv{
+    left: 60px;
+}
+
+.tryAgainCard{
+    
+    border-radius: 20px;
 }

@@ -37,7 +37,7 @@ import {
 	Icon28WarningTriangleOutline } from '@vkontakte/icons';
 
 
-const Pages = ({ id, go, platform, pageId, restatePageId, learn}) => {
+const Pages = ({ id, go, pageId, restatePageId, learn}) => {
 
     var availablePages = [<Paper />, <Plastic />, <Clothing/> , <FoodWaste/>, <Glass/>, <Bulb/>, <Packaging/>, <Metal/>, <Domestic/>, <Hazardous/>, <TetraPak/>, <Batteries/>, <Other/>]
 

@@ -14,6 +14,9 @@ import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
 
+
+	
+
 	async function getUserLocation(){
 		const userLocation = await bridge.send("VKWebAppGetGeodata");
 		 
@@ -23,25 +26,25 @@ const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
 			long: userLocation.long, }
 		await setUserLoc(newItem); 
 		await console.log(userLoc)
+
+		await bridge.send("VKWebAppStorageSet", {
+			key: "onBoards11",
+			value: "false"
+		});
+
+		bridge.send("VKWebAppStorageSet", {
+			key: "geoAccess",
+			value: "true"
+		});
+
+		
+
+		await restateFirst(false) 
 		 
 	}
 
 	
-	const getPosition= () =>{
-
-
-			
-
-
-
-		bridge.send("VKWebAppStorageSet", {
-			key: "onBoard",
-			value: "true"
-		});
-
-		restateFirst(false) 
-	  
-	}
+	
 	
 	
 	
@@ -73,6 +76,7 @@ const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
 				onClick={(e)=>{
 					getUserLocation();
 					go(e);
+					
 				}} 
 				data-to="home"
 				className='mainButton-get'
@@ -82,7 +86,21 @@ const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
 			</Div>
 
             <Div>
-                <Button size="l" appearance="accent" mode="tertiary" className='notNowButton' onClick={go} data-to='home'>
+                <Button size="l" appearance="accent" mode="tertiary" className='notNowButton' onClick={()=>{
+					bridge.send("VKWebAppStorageSet", {
+						key: "onBoards11",
+						value: "false"
+					});
+					bridge.send("VKWebAppStorageSet", {
+						key: "geoAccess",
+						value: "false"
+					});
+					
+			
+					restateFirst(false) 
+					go();
+					
+				}} data-to='home'>
                     Не сейчас
                 </Button>
             </Div>

@@ -34,7 +34,7 @@ import {
 	Icon28WarningTriangleOutline } from '@vkontakte/icons'; 
 	
 
-const Guides = ({ id, go, fetchedUser, restateTabState, getTabState, restatePageId}) => {
+const Guides = ({ id, go, fetchedUser, getTabState, restatePageId}) => {
  
 
 
