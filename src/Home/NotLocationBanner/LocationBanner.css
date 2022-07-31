@@ -1,0 +1,52 @@
+.title-banner-loc{ 
+    position: absolute;  
+    top: 28px;
+    left: 65px;
+    right: 10px;
+}
+
+.Div-banner-loc{ 
+    
+    border-radius: 20px;
+}
+
+
+.Icon-banner-loc{  
+    position: absolute;               /* 2 */
+    top: 38px; 
+    left: 10px;
+}
+
+
+.location-div{
+
+    position: relative;
+}
+ 
+
+.cardScroll-active{
+    margin-top: 10px;
+    margin-bottom: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    
+    
+    border-radius: 20px;
+
+}
+.cardScroll-active:hover{
+    margin-top: 10px;
+    margin-bottom: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    transition-duration: 2000ms;
+    
+    border-radius: 20px;
+    filter: brightness(85%);
+    cursor: pointer;
+    
+}

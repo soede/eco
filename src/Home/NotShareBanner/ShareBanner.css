@@ -1,0 +1,28 @@
+.title-banner{ 
+    
+    margin-left: 50px; 
+    margin-top: -41px;
+}
+
+.iconDiv-banner{
+    padding-left: 13px; 
+    padding-top: 23px; 
+    
+    
+    border-radius: 20px;
+}
+
+
+.scrollDiv-h{
+    margin-top: 10%;
+}
+
+.button-banner{
+    padding: 4px;
+    border-radius: 10px;
+    margin-left: 130px; 
+    margin-top: 15px;
+}
+
+.cardScroll-banners{
+}

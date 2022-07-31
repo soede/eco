@@ -12,12 +12,31 @@ import '../css/GetLocation.css';
 import { Icon28LocationMapOutline } from '@vkontakte/icons'; 
 
 
-const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
+const GetLocation = ({ id, go, setUserLoc, userLoc, setPopout}) => {
+
+	useEffect(() => { 
+		async function fetchData() {
+
+			await setPopout(null);
+			 
+			
+
+
+		} 
+		fetchData();
+		
+	}, []);
 
 
 	
 
-	async function getUserLocation(){
+
+	
+
+	async function getUserLocation(e){
+
+		
+		
 		const userLocation = await bridge.send("VKWebAppGetGeodata");
 		 
 		console.log(userLocation) 
@@ -28,18 +47,18 @@ const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
 		await console.log(userLoc)
 
 		await bridge.send("VKWebAppStorageSet", {
-			key: "onBoards11",
+			key: "onBoard",
 			value: "false"
 		});
 
-		bridge.send("VKWebAppStorageSet", {
+		await bridge.send("VKWebAppStorageSet", {
 			key: "geoAccess",
 			value: "true"
 		});
 
-		
+		 
 
-		await restateFirst(false) 
+		
 		 
 	}
 
@@ -58,7 +77,7 @@ const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
             <Div  style={{ paddingTop: 60, paddingLeft: 50 }}>
 				 <Icon28LocationMapOutline className="mainIcon-get" width={64} height={64}/>
 			</Div>
-			<div><Title level="1"  className='title-get'> Используйте все функции! </Title></div>
+			<div><Title level="1"  className='title-get'>Используйте все функции! </Title></div>
 			<div> <Title level="3" weight="3" className="discription-get">Предоставьте доступ к местоположению для сортировки пунктов по дальности</Title></div>
 			
 			
@@ -74,8 +93,11 @@ const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
 			<Div>
 				<Button
 				onClick={(e)=>{
-					getUserLocation();
-					go(e);
+					async function goPage(e){
+						getUserLocation(e);
+						go(e);
+					}
+					goPage(e)
 					
 				}} 
 				data-to="home"
@@ -86,19 +108,17 @@ const GetLocation = ({ id, go, setUserLoc, userLoc}) => {
 			</Div>
 
             <Div>
-                <Button size="l" appearance="accent" mode="tertiary" className='notNowButton' onClick={()=>{
+                <Button size="l" appearance="accent" mode="tertiary" className='notNowButton' onClick={(e)=>{
 					bridge.send("VKWebAppStorageSet", {
-						key: "onBoards11",
-						value: "false"
+						key: "onBoard",
+						value: "false-notLoc"
 					});
 					bridge.send("VKWebAppStorageSet", {
 						key: "geoAccess",
 						value: "false"
 					});
-					
-			
-					restateFirst(false) 
-					go();
+					 
+					go(e);
 					
 				}} data-to='home'>
                     Не сейчас

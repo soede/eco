@@ -4,43 +4,57 @@ import bridge from '@vkontakte/vk-bridge';
 import { Panel, ScreenSpinner, PanelHeader, PanelHeaderBack, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card, Text  } from '@vkontakte/vkui';
 
 
-import { Map, Marker } from 'react-wrapper-mapkitjs';
+import { AppleMaps, Annotation } from '@zandor300/react-apple-mapkitjs';
 
 import '../css/MapPanel.css'; 
 
 import EmojiDefine from '../lists/EmojiDefine';
-
+ 
 
 
 
 import { Icon28ChevronDownOutline, Icon28ChevronUpOutline, Icon28LocationMapOutline} from '@vkontakte/icons'; 
 
 
-const MapPanel = ({ id, go, points, openPoint, goTo, }) => {
-	 
+const MapPanel = ({ id, go, points, openPoint, goTo, toBack, fetchedUser}) => {//то самый
+	
 
 	return(
 		<Panel id={id}>
-              <PanelHeader left={<PanelHeaderBack onClick={go} data-to='home' />}className='ph-paper'> Пункты </PanelHeader>
+              <PanelHeader left={<PanelHeaderBack onClick={toBack}  />}className='ph-paper'> Пункты </PanelHeader>
 
 
 
-            <div style={{width: document.documentElement.scrollWidth, height: document.documentElement.scrollHeight}} className='MapContainer'>
-                <Map 
-				tokenOrCallback="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZRSzhEM0s4VjUifQ.eyJpc3MiOiJGOUMzNVo3TURWIiwiaWF0IjoxNjU0NzYwNTc3LCJleHAiOjE2ODYyNjg4MDB9.H_2lSyr73hPdfb30rKl6rEUtulLmDMrwTH1CoAfylmKE0cCWSk2MQO6lvwHp6_LtTKnmjOuFbMmOzG5Rczz4XA" 
-				region={{latitude:59.840875230457, 
-						longitude:30.321853154506794,
-        				latitudeSpan: 0.50,
-       					longitudeSpan: 0.50,  }}>
-			        {openPoint.map((item)=>{
+            
+			<AppleMaps
+			token="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZRSzhEM0s4VjUifQ.eyJpc3MiOiJGOUMzNVo3TURWIiwiaWF0IjoxNjU0NzYwNTc3LCJleHAiOjE2ODYyNjg4MDB9.H_2lSyr73hPdfb30rKl6rEUtulLmDMrwTH1CoAfylmKE0cCWSk2MQO6lvwHp6_LtTKnmjOuFbMmOzG5Rczz4XA"
+			longitude={openPoint[0].log}
+			latitude={openPoint[0].lat}
+			zoomLevel={5}
+			height={document.documentElement.clientHeight- 60}
+       		width={document.documentElement.clientWidth}
+		>
+
+			{openPoint.map((item, index)=>{
 					var emoji = EmojiDefine
 						return(
-							<Marker glyphText={EmojiDefine(item.Category)} title={item.Category} subtitle={item.Objects[0].properties.content_text} color="#fff" longitude={item.Objects[0].geometry.coordinates[0]}
-				        		latitude={item.Objects[0].geometry.coordinates[1]} />
+							<Annotation 
+							id={index.toString()}
+							key={index.toString()}
+							glyphText={EmojiDefine(item.Category)} 
+							title={item.Category} 
+							subtitle={item.address} 
+							color="#fff" 
+							longitude={item.log}
+				        	latitude={item.lat}
+							selected={true} />
 						)
 					})}
-		        </Map>
-            </div>
+			 
+			 
+	
+			</AppleMaps>
+            
                 
 
 		

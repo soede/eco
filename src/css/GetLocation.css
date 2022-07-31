@@ -5,8 +5,8 @@
     text-align: center;
     width: 100%;
     
-    position: absolute;               /* 2 */
-    left: 50%;                         /* 3 */
+    position: absolute;               
+    left: 50%;                        
     transform: translate( -50%, 0)
     
 }
@@ -16,7 +16,8 @@
     position: absolute;
     top: 40%;
     color: #99A2AD;
-    
+    left: 50%;                        
+    transform: translate( -50%, 0);
     text-align: center;
 }
 

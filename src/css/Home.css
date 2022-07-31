@@ -10,7 +10,7 @@
 
 .openCardDiv{
 
-    height: 300px; /*анекдот про тракториста*/
+    height: 320px; /*анекдот про тракториста*/
 
     
     
@@ -201,6 +201,7 @@
     white-space: nowrap; 
     overflow: hidden;
     border-radius: 12px;
+    margin-top: 15px;
 }
 
 
@@ -225,6 +226,8 @@
 }
 
 .cardScroll-h{
+    margin-top: 10px;
+    margin-bottom: 14px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -246,4 +249,13 @@
 .tryAgainCard{
     
     border-radius: 20px;
+}
+
+
+/*banners*/
+.bannersGroup{ 
+}
+
+.cardScroll{
+    
 }

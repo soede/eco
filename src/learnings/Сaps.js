@@ -1,50 +1,44 @@
 import React from 'react';
 
+
 import '../css/LearnPages.css';
 import { Panel, Div, PanelHeader, Spacing, Button, Text, PanelHeaderBack, Title, TabsItem, Tabs, HorizontalCell, HorizontalScroll, PanelHeaderButton  } from '@vkontakte/vkui';
 
 
+
+
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
-const Domestic = ({setOpenPoint, goTo, pointsFullArray}) =>{
+
+const Сaps = ({setOpenPoint, goTo, pointsFullArray}) =>{
 
 
 	return(
         <Div>
 
-        <Title className='headerPage' level="1">Бытовая техника</Title>
+        <Title className='headerPage' level="1">Крышечки</Title>
         <Spacing size={16} />
+
         <Title  className='forColor' level="2" >Что можно сдать?</Title>
         <Spacing size={8} />
+        <Text>Крышечки от 5-литровых канистр из под воды, непищевых жидкостей: стеклоомывателей; Любые другие крышечки с маркировкой в треугольнике «2», «02», надписью HDPE, РЕ-HD, PE; </Text>
+
+        <Spacing size={16} />
+
+        <Title  className='forColor' level="2" >Что нельзя сдать?</Title>
+        <Spacing size={8} />
         <Text>
-            <div><span className="forColor">•</span>Компьютерная техника и электронное оборудование</div>
+            <div><span className="forColor">•</span>Крышки от кофе</div>
             <br />
-            <div><span className="forColor">•</span>Телефонные аппараты и мобильные телефоны</div>
+            <div><span class="forColor">•</span>Крышки от тюбиков зубной пасты.</div>
             <br />
-            <div><span className="forColor">•</span>Кондиционеры, вентиляторы и обогреватели</div>
-            <br />
-            <div><span className="forColor">•</span>Электронные расходные материалы (схемы, платы, картриджи с приставок)</div>
-            <br />
-            <div><span className="forColor">•</span>05 - РР - ПП - С/05 - С/РР</div>
-            <br />
+            <div><span className="forColor">•</span>Крышки от косметических средств</div>
+            <br /> 
         </Text>
 
         <Spacing size={16} />
-        <Title  className='forColor' level="2" >Куда сдавать?</Title>
-        <Spacing size={8} />
-        <Text>
-        <div><span className="forColor">•</span>Фольгированный пластик </div>
-            <br />
-            <div><span className="forColor">•</span>Пункты приема</div>
-            <br />
-            <div><span className="forColor">•</span>Волонтерские организации </div>
-            <br />
-            <div><span className="forColor">•</span>Магазины бытовой техники (акции)</div>
-            <br />
-
-
-        </Text>
-
+         
+        
         <div className='button-div-s'>
 
 			<Div>
@@ -53,7 +47,7 @@ const Domestic = ({setOpenPoint, goTo, pointsFullArray}) =>{
 					async function toMap(){
                         var itCategory =[]
                         await pointsFullArray.map((mainItem)=>{
-                            if(mainItem.Category === 'Бытовая техника'){ 
+                            if(mainItem.Category === 'Крышечки'){ 
                                 mainItem.Objects.map((item)=>{
                                     const newItem = { 
                                         Category: mainItem.Category,
@@ -82,8 +76,10 @@ const Domestic = ({setOpenPoint, goTo, pointsFullArray}) =>{
 			</Div>
 
 			</div>
+        
+
 
     </Div>
     )
     }
-export default Domestic;
+export default Сaps;

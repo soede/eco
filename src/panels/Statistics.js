@@ -21,10 +21,7 @@ const Statistics = ({ id, go, restateFirst, setPopout}) => {
 
 
 
-		bridge.send("VKWebAppStorageSet", {
-			key: "onBoard",
-			value: "true"
-		});
+		 
 
 		restateFirst(false)
 
@@ -63,6 +60,7 @@ const Statistics = ({ id, go, restateFirst, setPopout}) => {
 				onClick={(e)=>{
 					go(e);
 					setFirst();
+					
 				}} 
 				data-to="preview"
 				className='button-s'

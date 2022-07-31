@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import bridge from '@vkontakte/vk-bridge';
 import axios from 'axios';
 
-import { Panel, ScreenSpinner, ButtonGroup, HorizontalCell, HorizontalScroll, PanelHeader, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card, Text, Gradient  } from '@vkontakte/vkui';
+import { Panel, ScreenSpinner, ButtonGroup, HorizontalCell, HorizontalScroll, PanelHeader, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card, Text, CardScroll , Banner  } from '@vkontakte/vkui';
 
 import '../css/Home.css';  
 
@@ -13,25 +13,32 @@ import UnitsDefine from '../tools/UnitsDefine'; //определение ед. �
 import iconsList from '../lists/Icons'; //иконки и текст к ним 
 import { Icon28LocationOutline, Icon28ChevronDownOutline, Icon28ChevronUpOutline, Icon28LocationMapOutline, Icon28ThumbsUpOutline} from '@vkontakte/icons'; 
 
-import PagesTab from '../learnings/Pages';
 
 
-const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, accessGeo }) => {
+
+import NotShareBanner from '../Home/NotShareBanner/NotShareBanner';
+
+import NotLocationBanner from '../Home/NotLocationBanner/NotLocationBanner';
+
+
+const Home = ({ id, setUserLoc,  go, fetchedUser, getTabState, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, accessGeo, locationComplete }) => {
 	
 	
 	const [cardInfo, setCardInfo] =useState();
 
 	const [itemSort, setItemSort] = useState([]);
 
-	const [select, setSelect] = useState(0) 
+	const [select, setSelect] = useState(0);
 
-	 
+	
+	var bannerList = [<NotShareBanner go={go}/>]
 
- 
-
+	locationComplete === true? {}:bannerList.unshift(<NotLocationBanner setUserLoc={setUserLoc} setPopout={setPopout}/>)
 
 
 	useEffect(() => {
+
+		
 
 		const sortPoints = () =>{
 			points.map((item, index)=>{
@@ -47,25 +54,16 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 			 
 
 
-
 			
 
-			await points.sort((a, b) => CountDistance(30.3172771559412, 59.936348451648286, a.Objects[0].geometry.coordinates[0], a.Objects[0].geometry.coordinates[1]) > CountDistance(30.3172771559412, 59.936348451648286, b.Objects[0].geometry.coordinates[0], b.Objects[0].geometry.coordinates[1]) ? 1 : -1);
-			
-			await points.map((item, index)=>{
-				console.log('a')
-				console.log(item)
-			})
+			 
 
 			
 			 
 			  if(points){
 				setCardInfo(points)
-				await setPopout(null);
-				points.map((item, index)=>{
-					console.log("item")
-					console.log(item)
-				})
+				//await setPopout(null);
+				 
 			  }
 
 			 
@@ -77,9 +75,9 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 		
 	}, []);
 
-	let userLocation = [30.3172771559412, 59.936348451648286]
+	let userLocation = [userLoc.lat, userLoc.long]
 
-	
+	console.log(userLoc.lat + ' + ' + userLoc.long)
 
 	
 
@@ -88,19 +86,19 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 	const openCard = (item)=>{
 		return(<div>
 			<Title className='openHeadTitle' level="1" weight="2"> {item.Category} </Title>
-			{userLoc.access && accessGeo&& <Title className='distanceToPointOpen' level="2" weight="2"> {UnitsDefine(CountDistance(userLocation[0], userLocation[1], item.Objects[0].geometry.coordinates[0], item.Objects[0].geometry.coordinates[1]))} </Title>}
+			{userLoc.access === true && userLocation.lat && <Title className='distanceToPointOpen' level="2" weight="2"> {UnitsDefine(CountDistance(userLoc.lat, userLoc.long, item.log, item.lat))} </Title>}
 			<Icon28ChevronUpOutline className='chevronUpIcon' />
 
 			<div>
 				<div className='openAddressHeadDiv'> <Icon28LocationOutline fill='#62A1E8' width={20} height={20} className='adressIcon'/> <Title className='openAddressHead' level="2" weight="2">По адресу:</Title></div>
-				<div className='adressDiv'> <Text className='openAddress' weight="2">{item.Objects[0].properties.address}</Text></div>
+				<div className='adressDiv'> <Text className='openAddress' weight="2">{item.address}</Text></div>
 			</div> 
 			<div>
 				<div className='openTakeHeadDiv'> <Icon28ThumbsUpOutline fill='#62A1E8' width={20} height={20} className='adressIcon'/><Title className='openTakeHead' level="2" weight="2">Можно сдать:</Title></div>
 				<div className='openTakeDiv' >
-				{item.Objects[0].properties.content_text.split(',').map((items)=>{
+				{item.contentText.split(',').map((items, index)=>{
 					return(
-						<Button className='openTakeText' hasActive={false} hasHover={false} appearance='neutral' mode="primary" size="s" ><span className="forColor">{items}</span></Button>
+						<Button key={index.toString()}className='openTakeText' hasActive={false} hasHover={false} appearance='neutral' mode="primary" size="s" ><span className="forColor">{items}</span></Button>
 					)
 				})}
 				</div>
@@ -122,11 +120,12 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 			</div>)
 	}
 	const closeCard =(item) => {
+		console.log(UnitsDefine(CountDistance(userLoc.lat, userLoc.long, item.log, item.lat)))
 		return(
 			<div> 
 				<Title className='closeHeadTitle' level="1" weight="2"> {item.Category} </Title> 
 				<Icon28ChevronDownOutline className='chevronDownIcon' width={28} height={28} />
-				{userLoc.access && accessGeo&& <Title className='distanceToPointClose' level="2" weight="2"> {UnitsDefine(CountDistance(userLocation[0], userLocation[1], item.Objects[0].geometry.coordinates[0], item.Objects[0].geometry.coordinates[1]))} </Title>}
+				{userLoc.access && userLoc.long && userLoc.access === true && <Title className='distanceToPointClose' level="2" weight="2"> {UnitsDefine(CountDistance(userLoc.lat, userLoc.long, item.log, item.lat))} </Title>}
 			</div>
 		) }
 
@@ -135,18 +134,50 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 
 
 		 
-	   
-
+		var y = 0; //тест пулasas
 	  
 
 
 	return(
 		<Panel id={id}> 
 
+
+<div>
+					<Group className='bannersGroup' header={ <Title style={{ padding: 20 }} level="1" >Подсказки</Title>}>
+
+						<CardScroll  
+						className='cardScroll' >
+
+							 
+
+
+								{bannerList && bannerList.length > 0 && bannerList.map((item, index)=>{
+									return(
+										<div key={index}>
+											{item}
+										</div>
+									)
+								})}
+					
+							 				
+						</CardScroll >
+            		</Group>
+				</div>
+
 		
 
 				<div> 
-					<Group className='takeGroup' header={ <Title style={{ padding: 20 }} level="1"> Узнайте как сдать</Title>} >
+					<Group className='takeGroup' header={ <Title style={{ padding: 20 }} level="1" onClick={()=>{
+						y+=1;
+						if(y===5){
+							alert('kek');
+							bridge.send("VKWebAppStorageSet", {
+								key: "onBoard",
+								value: "true"
+							});
+						}
+
+					}}> Узнайте как сдать11</Title>} >
 
 						<HorizontalScroll 
 						getScrollToLeft={(i) => i - 120}
@@ -157,7 +188,7 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 
 								{iconsList(0).map((item, index)=>{
 									return(
-										<HorizontalCell className='itemCell' onClick={(event)=>{
+										<HorizontalCell key={index.toString()}className='itemCell' onClick={(event)=>{
 											go(event);
 											restatePageId(index);
 										}} data-to={"pages"}>
@@ -179,6 +210,11 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 						</HorizontalScroll>
             		</Group>
 				</div>
+
+
+
+
+				
 
 
 				
@@ -206,13 +242,13 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 
 					
 					 
-					<Card key={index} className="card-h" onClick={()=>{ 
+					<Card key={index.toString()} className="card-h" onClick={()=>{ 
 
 						 
 
 						setPoints([
 							...points.map((inf)=>
-							inf.Category === item.Category ? {...inf, open: !inf.open} : {...inf})
+							inf.id === item.id ? {...inf, open: !inf.open} : {...inf})
 						]) 	
 
 					}} mode="shadow">  <div className={item.open? 'openCardDiv':'closeCardDiv'}> {item.open === true && openCard(item)} {!item.open && closeCard(item)}  </div> </Card>
@@ -235,8 +271,7 @@ const Home = ({ id, go, fetchedUser, getTabState, points, setPopout, setOpenPoin
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
-	tabState: PropTypes.string.isRequired,
+	go: PropTypes.func.isRequired, 
 	fetchedUser: PropTypes.shape({
 		photo_200: PropTypes.string,
 		first_name: PropTypes.string,
