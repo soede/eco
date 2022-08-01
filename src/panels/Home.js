@@ -21,7 +21,7 @@ import NotShareBanner from '../Home/NotShareBanner/NotShareBanner';
 import NotLocationBanner from '../Home/NotLocationBanner/NotLocationBanner';
 
 
-const Home = ({ id, setUserLoc,  go, fetchedUser, getTabState, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, accessGeo, locationComplete }) => {
+const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabState, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, accessGeo, locationComplete }) => {
 	
 	
 	const [cardInfo, setCardInfo] =useState();
@@ -62,7 +62,7 @@ const Home = ({ id, setUserLoc,  go, fetchedUser, getTabState, points, setPopout
 			 
 			  if(points){
 				setCardInfo(points)
-				//await setPopout(null);
+				 setPopout(null);
 				 
 			  }
 
@@ -79,6 +79,11 @@ const Home = ({ id, setUserLoc,  go, fetchedUser, getTabState, points, setPopout
 
 	console.log(userLoc.lat + ' + ' + userLoc.long)
 
+	console.log("userLocationforHead:")
+
+
+	console.log(userLocationforHead)
+
 	
 
 
@@ -86,7 +91,7 @@ const Home = ({ id, setUserLoc,  go, fetchedUser, getTabState, points, setPopout
 	const openCard = (item)=>{
 		return(<div>
 			<Title className='openHeadTitle' level="1" weight="2"> {item.Category} </Title>
-			{userLoc.access === true && userLocation.lat && <Title className='distanceToPointOpen' level="2" weight="2"> {UnitsDefine(CountDistance(userLoc.lat, userLoc.long, item.log, item.lat))} </Title>}
+			{userLocationforHead.lat && <Title className='distanceToPointOpen' level="2" weight="2"> {UnitsDefine(CountDistance(userLocationforHead.lat, userLocationforHead.long, item.lat, item.log ))} </Title>}
 			<Icon28ChevronUpOutline className='chevronUpIcon' />
 
 			<div>
@@ -120,12 +125,12 @@ const Home = ({ id, setUserLoc,  go, fetchedUser, getTabState, points, setPopout
 			</div>)
 	}
 	const closeCard =(item) => {
-		console.log(UnitsDefine(CountDistance(userLoc.lat, userLoc.long, item.log, item.lat)))
+		console.log(UnitsDefine(CountDistance(userLoc.lat, userLoc.long , item.lat, item.log)))
 		return(
 			<div> 
 				<Title className='closeHeadTitle' level="1" weight="2"> {item.Category} </Title> 
 				<Icon28ChevronDownOutline className='chevronDownIcon' width={28} height={28} />
-				{userLoc.access && userLoc.long && userLoc.access === true && <Title className='distanceToPointClose' level="2" weight="2"> {UnitsDefine(CountDistance(userLoc.lat, userLoc.long, item.log, item.lat))} </Title>}
+				{userLocationforHead.lat  && <Title className='distanceToPointClose' level="2" weight="2"> {UnitsDefine(CountDistance(userLocationforHead.lat, userLocationforHead.long, item.lat, item.log ))} </Title>}
 			</div>
 		) }
 

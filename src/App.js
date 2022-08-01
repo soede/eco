@@ -25,9 +25,13 @@ const App = (first) => {
 	const [firstStart, setFirstStart] = useState(true); //первый запуск
 	const [points, setPoints] = useState([]) //информация о пунктах
 	const [openPoint, setOpenPoint] = useState([]) //координаты на открываемый пункт
-	const [userLoc, setUserLoc] = useState({'access': false, 'lat': 30.359034448668798, 'long': 59.9308983472909, })
+	const [userLoc, setUserLoc] = useState({'access': false, 'lat': 30.359034448668798, 'long': 59.9308983472909, }) //координаты для счетов
 	const [accessGeo, setAccessFeo] = useState(false); 
 	const [pointsFullArray, setPointsFullArray] = useState([])
+
+	const [userLocationforHead, setUserLocationforHead] = useState({'access': false, 'lat': 30.359034448668798, 'long': 59.9308983472909, })
+
+	var localUserLocation = {'access': false, 'lat': 30.359034448668798, 'long': 59.9308983472909, } //'быстрые' координаты
  
 	 
 
@@ -62,14 +66,24 @@ const App = (first) => {
 				if(geoGet==='true'){
 					const userLocation = await bridge.send("VKWebAppGetGeodata");
 
-					if(userLocation){
-						const newItem = {access: true, 
-						lat: userLocation.lat, 
-						long: userLocation.long, }
+					await console.log('фвфвфвфввфвфвфвфв')
+					await console.log('loool' + userLocation) 
+					
+
+					if(userLocation.available){
+						const newItem =  {'access': true,  
+						'lat': userLocation.lat, 
+						'long': userLocation.long, }
 						await setUserLoc(newItem); 
+						localUserLocation = newItem 
+						await console.log('ниже данные для title')
+						await console.log(userLocationforHead)
+						
+					}else{
+						console.log('Не получилось')
 					}
 
-					console.log('ASDhsdih')
+					console.log('забрал данные юзера, они были')
 					
 				}
 				await setFirstStart(false)
@@ -83,36 +97,39 @@ const App = (first) => {
 		
 
 		async function fetchData() {
-			await checkFirst()
-			await console.log( userLoc)
+			await checkFirst() 
+			await console.log('ниже будут данные о локации и кину по ним запрос на бэк')
+			await console.log(localUserLocation)
 			await axios.post(`https://showtime.app-dich.com/api/eco-hub/places${window.location.search}`, {
-			x: userLoc.lat,
-			y: userLoc.long
+			x: localUserLocation.lat,
+			y: localUserLocation.long
 			})
 			.then(async function (response) {
 
 				var pointArrays = []
 				var fullPointArray = []
 
+				await console.log('ниже данные которые скинул сервер')
+
 				
-				//console.warn(response.data.data); 
+				await console.warn(response.data.data); 
 
-				const defLocation  = {access: 'default', 
-					lat:  30.3172771559412, 
-					long: 59.936348451648286, }
+				const defLocation  = {
+					access: 'default', lat:  30.3172771559412, long: 59.936348451648286, 
+				}
 
 
-					async function accessSuccess(itis, iii){
+					async function accessSuccess(itis){
 
-						var forID = 0
+						var forID = 0 //для Id item'ов
 
-						fullPointArray = itis
+						fullPointArray = itis // для карт
 
 						
 						
 						await itis.map((mainItem, index)=>{
 
-							for (var i = 0; i < 4; i++) {
+							for (var i = 0; i < 4; i++) { //4 вида а главный экран
 								 
 								const newItem = {
 									id: forID,
@@ -125,7 +142,9 @@ const App = (first) => {
 									contentText: mainItem.Objects[i].properties.content_text
 		
 								}
-								pointArrays.push(newItem) 
+								console.log('ниже данные полученные от сервера за один maping')
+								console.log(newItem)
+								pointArrays.push(newItem)  //добавил в список
 								
 								forID++ ;
 								// ещё какие-то выражения
@@ -134,9 +153,14 @@ const App = (first) => {
 						}) 
 			
 
-						var sorArrayws = await pointArrays.sort((a, b) => CountDistance(userLoc.lat, userLoc.long , a.log, a.lat) > CountDistance(userLoc.long, userLoc.lat, b.log, b.lat) ? 1 : -1);
-						 
-						console.log(userLoc)
+						var sorArrayws = await pointArrays.sort((a, b) => CountDistance(userLoc.lat, userLoc.long , a.lat, a.log) > CountDistance(userLoc.lat, userLoc.long,  b.lat, b.log ) ? 1 : -1);
+						await console.log("координаты нудные для рассчета дистанции")
+						await console.log(pointArrays[1].lat)
+						await console.log(pointArrays[1].log)
+						await console.log('и')
+						await console.log(userLoc.lat)
+						await console.log(userLoc.long)
+						await console.log(userLoc)
 						await setPoints(sorArrayws) 
 						await setPointsFullArray(fullPointArray)
 
@@ -147,9 +171,7 @@ const App = (first) => {
 							await setPoints(ddd) 
 						}
 
-						if(iii){
-							await gg()
-						}
+						 
 						
 					}
 
@@ -158,10 +180,18 @@ const App = (first) => {
 					 
 		
 		
-					
+					function updateLoc() {
+						const newItem = {'access': true,  //обнови UserLocation если он ничему не равен
+						'lat': 59.936348451648286, 
+						'long':  30.3172771559412, }
+						localUserLocation = newItem
+						setUserLoc(newItem)
+
+					}
+						
 				
 
-				await response.data.data.length? accessSuccess(response.data.data, false) : accessSuccess(response.data.data, true)
+				await response.data.data.length? accessSuccess(response.data.data): console.log('bp-pf ytuj')
 				
 				await console.log(pointsFullArray)
 				await setPopout(null)
@@ -200,6 +230,12 @@ const App = (first) => {
 
  
 		async function fetchData() {
+
+			const userLocation = await bridge.send("VKWebAppGetGeodata");
+
+					await console.log('фвфвфвфввфвфвфвфв')
+					await console.log('loool' + userLocation)
+					await setUserLocationforHead(userLocation)
 
 			const thisWidth = await document.documentElement.clientWidth;
 
@@ -271,7 +307,7 @@ const App = (first) => {
 						var sorArrayw = await pointArray.sort((a, b) => CountDistance(59.92698956006839, 30.370623688386186, a.lat, a.log) > CountDistance(59.92698956006839, 30.370623688386186, b.lat, b.log) ? 1 : -1);
 						 
 						await console.log(pointsFullArray)
-						await setPoints(sorArrayw) 
+						//await setPoints(...[sorArrayw])  //открой похзже
 						await setPointsFullArray(fullPointArray)
 
 				
@@ -396,7 +432,7 @@ const App = (first) => {
 							<View activePanel={activePanel}>
 								<Statistics id='statistics' go={go} restateFirst={restateFirst} setPopout={setPopout}/>
 								<Preview id='preview' go={go} /> 
-								<Home id='home' setUserLoc={setUserLoc} fetchedUser={fetchedUser} go={go} points={points} setPopout={setPopout} setOpenPoint={setOpenPoint} restatePageId={restatePageId} userLoc={userLoc} setPoints={setPoints} accessGeo={accessGeo}  locationComplete={locationComplete}/>
+								<Home id='home' userLocationforHead={userLocationforHead} setUserLoc={setUserLoc} fetchedUser={fetchedUser} go={go} points={points} setPopout={setPopout} setOpenPoint={setOpenPoint} restatePageId={restatePageId} userLoc={userLoc} setPoints={setPoints} accessGeo={accessGeo}  locationComplete={locationComplete}/>
 								<Pages id='pages' go={go} pageId={pageId} restatePageId={restatePageId} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} goTo={goTo} itFirstStartPages={itFirstStartPages} firstStartPage={firstStartPage} setFirstStartPages={setFirstStartPages} select={select} setSelect={setSelect}/>
 								<MapPanel id='mapPanel'fetchedUser={fetchedUser} go={go} points={points} openPoint={openPoint} goTo={goTo} toBack={toBack}/>
 								<GetLocation id='getLoc' go={go} setUserLoc={setUserLoc} userLoc={userLoc} setPopout={setPopout} />
