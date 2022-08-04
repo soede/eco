@@ -9,7 +9,7 @@ import '../css/Statistics.css';
 
 
 
-const Statistics = ({ id, go, restateFirst, setPopout}) => {
+const Statistics = ({ id, go, setPopout}) => {
 
 
 	setPopout(null);
@@ -21,9 +21,7 @@ const Statistics = ({ id, go, restateFirst, setPopout}) => {
 
 
 
-		 
-
-		restateFirst(false)
+ 
 
 		console.log('завер')
 

@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Title, Div, Button} from '@vkontakte/vkui';
 import { ReactComponent as Statistic } from '../img/statistics.svg';
  
-
+import axios from 'axios';
 import '../css/GetLocation.css';
 
 
 import { Icon28LocationMapOutline } from '@vkontakte/icons'; 
 
 
-const GetLocation = ({ id, go, setUserLoc, userLoc, setPopout}) => {
+const GetLocation = ({ id, go, goTo, setUserLoc, userLoc, setPopout, setLocationComplete, setUserLocationforHead}) => {
 
 	useEffect(() => { 
 		async function fetchData() {
@@ -39,24 +39,36 @@ const GetLocation = ({ id, go, setUserLoc, userLoc, setPopout}) => {
 		
 		const userLocation = await bridge.send("VKWebAppGetGeodata");
 		 
-		console.log(userLocation) 
-		const newItem = {access: true, 
-			lat: userLocation.lat, 
-			long: userLocation.long, }
-		await setUserLoc(newItem); 
-		await console.log(userLoc)
+		if(userLocation.available){ 
+			await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client`).then(async function (response) {
+				const geo= response.data 
+				 
+				 const newItem = await {'access': true,
+				'lat': geo.latitude,
+				'long': geo.longitude}  
+				await setUserLocationforHead(newItem);
+				await setLocationComplete(true)
+				await bridge.send("VKWebAppStorageSet", {
+					key: "geoAccess",
+					value: "true"
+				});
+				await setUserLoc(newItem);
+				 
+		})
+			
+			
+		}else{
+			alert('Произошла ошибка') 
+		}
+	 
 
 		await bridge.send("VKWebAppStorageSet", {
 			key: "onBoard",
 			value: "false"
 		});
 
-		await bridge.send("VKWebAppStorageSet", {
-			key: "geoAccess",
-			value: "true"
-		});
-
 		 
+		
 
 		
 		 
@@ -94,8 +106,9 @@ const GetLocation = ({ id, go, setUserLoc, userLoc, setPopout}) => {
 				<Button
 				onClick={(e)=>{
 					async function goPage(e){
-						getUserLocation(e);
-						go(e);
+						await getUserLocation(e);
+						await goTo('home');
+						
 					}
 					goPage(e)
 					
@@ -117,6 +130,7 @@ const GetLocation = ({ id, go, setUserLoc, userLoc, setPopout}) => {
 						key: "geoAccess",
 						value: "false"
 					});
+					setLocationComplete(false)
 					 
 					go(e);
 					

@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import bridge from '@vkontakte/vk-bridge';
 import axios from 'axios';
 
-import { Panel, ScreenSpinner, ButtonGroup, HorizontalCell, HorizontalScroll, PanelHeader, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card, Text, CardScroll , Banner  } from '@vkontakte/vkui';
+import { Panel, HorizontalCell, HorizontalScroll, Button, Group, Title, CardGrid, Card, Text, CardScroll  } from '@vkontakte/vkui';
 
 import '../css/Home.css';  
 
@@ -21,23 +21,20 @@ import NotShareBanner from '../Home/NotShareBanner/NotShareBanner';
 import NotLocationBanner from '../Home/NotLocationBanner/NotLocationBanner';
 
 
-const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabState, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, accessGeo, locationComplete }) => {
+const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, locationComplete, setLocationComplete  }) => {
 	
 	
-	const [cardInfo, setCardInfo] =useState();
-
-	const [itemSort, setItemSort] = useState([]);
-
-	const [select, setSelect] = useState(0);
+ 
 
 	
 	var bannerList = [<NotShareBanner go={go}/>]
 
-	locationComplete === true? {}:bannerList.unshift(<NotLocationBanner setUserLoc={setUserLoc} setPopout={setPopout}/>)
+	 
+	locationComplete === true? {}:bannerList.unshift(<NotLocationBanner setUserLoc={setUserLoc} setLocationComplete={setLocationComplete} setPopout={setPopout} go={go} setUserLocationforHead={setUserLocationforHead}/>)
 
 
 	useEffect(() => {
-
+		 
 		
 
 		const sortPoints = () =>{
@@ -60,8 +57,7 @@ const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabSta
 
 			
 			 
-			  if(points){
-				setCardInfo(points)
+			  if(points){ 
 				 setPopout(null);
 				 
 			  }
@@ -76,14 +72,7 @@ const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabSta
 	}, []);
 
 	let userLocation = [userLoc.lat, userLoc.long]
-
-	console.log(userLoc.lat + ' + ' + userLoc.long)
-
-	console.log("userLocationforHead:")
-
-
-	console.log(userLocationforHead)
-
+ 
 	
 
 
@@ -91,7 +80,7 @@ const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabSta
 	const openCard = (item)=>{
 		return(<div>
 			<Title className='openHeadTitle' level="1" weight="2"> {item.Category} </Title>
-			{userLocationforHead.lat && <Title className='distanceToPointOpen' level="2" weight="2"> {UnitsDefine(CountDistance(userLocationforHead.lat, userLocationforHead.long, item.lat, item.log ))} </Title>}
+			
 			<Icon28ChevronUpOutline className='chevronUpIcon' />
 
 			<div>
@@ -124,13 +113,12 @@ const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabSta
 				>Открыть на карте</Button>
 			</div>)
 	}
-	const closeCard =(item) => {
-		console.log(UnitsDefine(CountDistance(userLoc.lat, userLoc.long , item.lat, item.log)))
+	const closeCard =(item) => { 
 		return(
 			<div> 
 				<Title className='closeHeadTitle' level="1" weight="2"> {item.Category} </Title> 
 				<Icon28ChevronDownOutline className='chevronDownIcon' width={28} height={28} />
-				{userLocationforHead.lat  && <Title className='distanceToPointClose' level="2" weight="2"> {UnitsDefine(CountDistance(userLocationforHead.lat, userLocationforHead.long, item.lat, item.log ))} </Title>}
+				{userLocationforHead.access  && <Title className='distanceToPointClose' level="2" weight="2"> {UnitsDefine(CountDistance(userLocationforHead.lat, userLocationforHead.long,  item.lat, item.log ))} </Title>}
 			</div>
 		) }
 
@@ -175,14 +163,24 @@ const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabSta
 					<Group className='takeGroup' header={ <Title style={{ padding: 20 }} level="1" onClick={()=>{
 						y+=1;
 						if(y===5){
-							alert('kek');
+
+							 axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client`).then(res => {
+								const geo= res.data 
+								 })
+							alert('dev');
 							bridge.send("VKWebAppStorageSet", {
 								key: "onBoard",
 								value: "true"
+								
+							});
+
+							bridge.send("VKWebAppStorageSet", {
+								key: "geoAccess",
+								value: "false"
 							});
 						}
 
-					}}> Узнайте как сдать11</Title>} >
+					}}> Узнайте как сдать </Title>} >
 
 						<HorizontalScroll 
 						getScrollToLeft={(i) => i - 120}
@@ -237,7 +235,7 @@ const Home = ({ id, setUserLoc, userLocationforHead,  go, fetchedUser, getTabSta
 			<CardGrid size="l">
  
 
-			{points&& points.map((item, index) =>{   
+			{points&& points.slice(0, 15).map((item, index) =>{   
 			
 
 				return(

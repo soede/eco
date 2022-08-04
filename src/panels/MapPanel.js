@@ -19,56 +19,68 @@ import { Icon28ChevronDownOutline, Icon28ChevronUpOutline, Icon28LocationMapOutl
 const MapPanel = ({ id, go, points, openPoint, goTo, toBack, fetchedUser}) => {//то самый
 	
 
-	return(
-		<Panel id={id}>
-              <PanelHeader left={<PanelHeaderBack onClick={toBack}  />}className='ph-paper'> Пункты </PanelHeader>
-
-
-
-            
-			<AppleMaps
-			token="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZRSzhEM0s4VjUifQ.eyJpc3MiOiJGOUMzNVo3TURWIiwiaWF0IjoxNjU0NzYwNTc3LCJleHAiOjE2ODYyNjg4MDB9.H_2lSyr73hPdfb30rKl6rEUtulLmDMrwTH1CoAfylmKE0cCWSk2MQO6lvwHp6_LtTKnmjOuFbMmOzG5Rczz4XA"
-			longitude={openPoint[0].log}
-			latitude={openPoint[0].lat}
-			zoomLevel={5}
-			height={document.documentElement.clientHeight- 60}
-       		width={document.documentElement.clientWidth}
-		>
-
-			{openPoint.map((item, index)=>{
-					var emoji = EmojiDefine
-						return(
-							<Annotation 
-							id={index.toString()}
-							key={index.toString()}
-							glyphText={EmojiDefine(item.Category)} 
-							title={item.Category} 
-							subtitle={item.address} 
-							color="#fff" 
-							longitude={item.log}
-				        	latitude={item.lat}
-							selected={true} />
-						)
-					})}
-			 
-			 
+	 
+	try{
+		return(
+			<Panel id={id}>
+				  <PanelHeader left={<PanelHeaderBack onClick={toBack}  />}className='ph-paper'> Пункты </PanelHeader>
 	
-			</AppleMaps>
-            
-                
-
-		
-
+	
+	
 				
+				<AppleMaps
+				token="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZRSzhEM0s4VjUifQ.eyJpc3MiOiJGOUMzNVo3TURWIiwiaWF0IjoxNjU0NzYwNTc3LCJleHAiOjE2ODYyNjg4MDB9.H_2lSyr73hPdfb30rKl6rEUtulLmDMrwTH1CoAfylmKE0cCWSk2MQO6lvwHp6_LtTKnmjOuFbMmOzG5Rczz4XA"
+				longitude={openPoint[0].log}
+				latitude={openPoint[0].lat}
+				zoomLevel={5}
+				height={document.documentElement.clientHeight- 60}
+				   width={document.documentElement.clientWidth}
+			>
+	 
+	
+				{openPoint.map((item, index)=>{
+						try{
+							return(
+								<Annotation 
+								id={index.toString()}
+								key={index.toString()}
+								glyphText={EmojiDefine(item.Category)} 
+								title={item.Category} 
+								subtitle={item.address} 
+								color="#fff" 
+								longitude={item.log}
+								latitude={item.lat}
+								selected={true} />
+							)
+						}catch(e){
+	
+						}
+							
+						})}
+				 
+				 
+		
+				</AppleMaps>
+				
+					
+	
+			
+	
+					
+	
+				
+							
+		
+		
+		
+				
+			</Panel>
+		);
+	}catch(e){
 
-			
-						
-	
-	
-	
-			
-		</Panel>
-	);
+	}
+
+
 }
 
 

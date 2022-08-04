@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 
 import { Panel,
 	 	PanelHeader,
 	  	Card,
-	 	Button,
-	  	Group,
 	  	Div,
 	  	Title,
 	  	TabsItem,
 	 	Tabs,
-	 	CardGrid,
-		PanelHeaderContent  } from '@vkontakte/vkui';
+	 	CardGrid,} from '@vkontakte/vkui';
 
 import '../css/Guides.css';
-import { ReactComponent as GoButton } from '../img/go.svg';
-import { ReactComponent as BottleOn } from '../img/bottle-on.svg';
+import { ReactComponent as GoButton } from '../img/go.svg'; 
 import { ReactComponent as BottleOff } from '../img/bottle-off.svg';
 import { ReactComponent as TetraOff } from '../img/tetra-off.svg';
 import { ReactComponent as EnergyOff } from '../img/energy-off.svg';
-import { ReactComponent as OtherOff } from '../img/other-off.svg';
-import { ReactComponent as OtherOn } from '../img/other-on.svg';
+import { ReactComponent as OtherOff } from '../img/other-off.svg'; 
 
 import { 
 	Icon24Cards2Outline,

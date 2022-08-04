@@ -27,26 +27,26 @@ import Other from './Other';
 
  
 
-const Pages = ({ id, go, pageId, restatePageId, learn, setOpenPoint, points, pointsFullArray, goTo, itFirstStartPages, firstStartPage, setFirstStartPages, select, setSelect }) => {
+const Pages = ({ id, go, pageId,setPopout, restatePageId, userLoc, setOpenPoint, userLocationforHead, pointsFullArray, goTo, itFirstStartPages, firstStartPage, setFirstStartPages, select, setSelect }) => {
     
 
     console.log(pointsFullArray)
 
-    
+     
 
-    var availablePages = [<Paper goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Plastic goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Clothing goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/> , 
-    <Tires goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Glass goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Bulb goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Сaps goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Metal goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Domestic goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Hazardous goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <TetraPak goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Batteries goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
-    <Other goTo={goTo} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>]
+    var availablePages = [<Paper goTo={goTo}  userLocationforHead={userLocationforHead}  userLoc={userLoc}  setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Plastic goTo={goTo} userLocationforHead={userLocationforHead} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Clothing goTo={goTo}  userLocationforHead={userLocationforHead} userLoc={userLoc}  setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/> , 
+    <Tires goTo={goTo}  userLocationforHead={userLocationforHead} userLoc={userLoc} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Glass goTo={goTo} userLocationforHead={userLocationforHead}  userLoc={userLoc} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Bulb goTo={goTo}  userLocationforHead={userLocationforHead} userLoc={userLoc} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Сaps goTo={goTo}  userLocationforHead={userLocationforHead} userLoc={userLoc} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Metal goTo={goTo} userLocationforHead={userLocationforHead}  userLoc={userLoc} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Domestic goTo={goTo} userLocationforHead={userLocationforHead}  userLoc={userLoc} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Hazardous goTo={goTo} userLocationforHead={userLocationforHead} userLoc={userLoc}  setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <TetraPak goTo={goTo}  userLocationforHead={userLocationforHead} userLoc={userLoc} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Batteries goTo={goTo} setPopout={setPopout} userLocationforHead={userLocationforHead}userLoc={userLoc}  setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>, 
+    <Other goTo={goTo} userLocationforHead={userLocationforHead} userLoc={userLoc}  setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} select={select}/>]
 
 
 

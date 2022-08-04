@@ -2,14 +2,17 @@ import React from 'react';
 
 
 import '../css/LearnPages.css';
-import { Panel, Div, PanelHeader, Spacing, Button, Text, PanelHeaderBack, Title, TabsItem, Tabs, HorizontalCell, HorizontalScroll, PanelHeaderButton  } from '@vkontakte/vkui';
+import { Panel, Div, PanelHeader, Spacing, Button, Text, PanelHeaderBack, Title, TabsItem, ScreenSpinner, HorizontalCell, HorizontalScroll, PanelHeaderButton  } from '@vkontakte/vkui';
 
 
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
+import CountDistance from '../tools/CountDistance'; //расчет дистанции
 
 
-const Batteries = ({setOpenPoint, goTo, pointsFullArray, select}) => {
+
+
+const Batteries = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) => {
 
 
 	return(
@@ -69,7 +72,19 @@ const Batteries = ({setOpenPoint, goTo, pointsFullArray, select}) => {
                                 })
                             }
                         })
-                        await setOpenPoint(itCategory);
+                        async function checkObj (itCategoryz){
+                            if(itCategoryz.length>100){
+                                var sorArrayws = await itCategoryz.sort((a, b) =>CountDistance(userLocationforHead.lat,  userLocationforHead.long, a.lat, a.log) > CountDistance( userLocationforHead.lat,userLocationforHead.long, b.lat, b.log) ? 1 : -1)
+                                
+                                await console.log("твоя позиция")
+                                await console.log(userLocationforHead.long)
+                                await setOpenPoint(sorArrayws.slice(0, 48));
+                            }else{
+                                await setOpenPoint(itCategoryz);
+                            }
+                        }
+                         
+                        await checkObj(itCategory)
                         await goTo('mapPanel');
                     }
                     toMap()
