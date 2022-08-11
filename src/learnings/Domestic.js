@@ -6,7 +6,7 @@ import { Panel, Div, PanelHeader, Spacing, Button, Text, PanelHeaderBack, Title,
 
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
-const Domestic = ({setOpenPoint, goTo, pointsFullArray}) =>{
+const Domestic = ({setOpenPoint, goTo, pointsFullArray }) =>{
 
 
 	return(
@@ -17,15 +17,17 @@ const Domestic = ({setOpenPoint, goTo, pointsFullArray}) =>{
         <Title  className='forColor' level="2" >Что можно сдать?</Title>
         <Spacing size={8} />
         <Text>
-            <div><span className="forColor">•</span>Компьютерная техника и электронное оборудование</div>
+            <div><span className="forColor">•</span>Компьютерная техника и электронное оборудование.</div>
             <br />
-            <div><span className="forColor">•</span>Телефонные аппараты и мобильные телефоны</div>
+            <div><span className="forColor">•</span>Телефонные аппараты и мобильные телефоны.</div>
             <br />
-            <div><span className="forColor">•</span>Кондиционеры, вентиляторы и обогреватели</div>
+            <div><span className="forColor">•</span>Кондиционеры, вентиляторы и обогреватели.</div>
             <br />
-            <div><span className="forColor">•</span>Электронные расходные материалы (схемы, платы, картриджи с приставок)</div>
+            <div><span className="forColor">•</span>Электронные расходные материалы (схемы, платы, картриджи с приставок).</div>
             <br />
-            <div><span className="forColor">•</span>05 - РР - ПП - С/05 - С/РР</div>
+            <div><span className="forColor">•</span>05 - РР - ПП - С/05 - С/РР.</div>
+            <br />
+            <div><span className="forColor">•</span>Фольгированный пластик. </div>
             <br />
         </Text>
 
@@ -33,13 +35,12 @@ const Domestic = ({setOpenPoint, goTo, pointsFullArray}) =>{
         <Title  className='forColor' level="2" >Куда сдавать?</Title>
         <Spacing size={8} />
         <Text>
-        <div><span className="forColor">•</span>Фольгированный пластик </div>
             <br />
-            <div><span className="forColor">•</span>Пункты приема</div>
+            <div><span className="forColor">•</span>Пункты приема.</div>
             <br />
-            <div><span className="forColor">•</span>Волонтерские организации </div>
+            <div><span className="forColor">•</span>Волонтерские организации. </div>
             <br />
-            <div><span className="forColor">•</span>Магазины бытовой техники (акции)</div>
+            <div><span className="forColor">•</span>Магазины бытовой техники (акции).</div>
             <br />
 
 

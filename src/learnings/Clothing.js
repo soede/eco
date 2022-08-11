@@ -11,7 +11,7 @@ import CountDistance from '../tools/CountDistance'; //расчет дистан�
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
-const Clothing = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) => {
+const Clothing = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) => {
 
 
 	return(
@@ -22,8 +22,7 @@ const Clothing = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>
             <Title  className='forColor' level="2" >Что можно сдать?</Title>
             <Spacing size={8} />
             <Text>Текстиль из натуральных волокон в очень плохом
-            состоянии, ветошь. Вещи, которые сохранили товарный
-            вид лучше отдать на благотворительность.</Text>
+            состоянии, ветошь. Вещи, которые сохранили товарный вид, лучше отдать на благотворительность.</Text>
 
             <Spacing size={16} />
             <Title  className='forColor' level="2" >Как подготовить к переработке?</Title>

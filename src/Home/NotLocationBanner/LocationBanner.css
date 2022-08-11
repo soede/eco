@@ -1,8 +1,20 @@
 .title-banner-loc{ 
-    position: absolute;  
+    position: absolute;
+    width: 300px;
+    height: 66px;  
     top: 28px;
-    left: 65px;
+    left: 55px;
     right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    box-orient: vertical;
+     
 }
 
 .Div-banner-loc{ 
@@ -14,7 +26,7 @@
 .Icon-banner-loc{  
     position: absolute;               /* 2 */
     top: 38px; 
-    left: 10px;
+    left: 0px;
 }
 
 
@@ -27,8 +39,8 @@
 .cardScroll-active{
     margin-top: 10px;
     margin-bottom: 14px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     padding-top: 5px;
     padding-bottom: 10px;
     
@@ -39,11 +51,11 @@
 .cardScroll-active:hover{
     margin-top: 10px;
     margin-bottom: 14px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     padding-top: 5px;
     padding-bottom: 10px;
-    transition-duration: 2000ms;
+    transition-duration: 500ms;
     
     border-radius: 20px;
     filter: brightness(85%);

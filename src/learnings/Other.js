@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import '../css/LearnPages.css';
 import { Panel, Div, PanelHeader, Spacing, Button, Text, PanelHeaderBack, Title, TabsItem, Tabs, HorizontalCell, HorizontalScroll, PanelHeaderButton  } from '@vkontakte/vkui';
@@ -12,31 +12,45 @@ import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
 
-const Other = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
+const Other = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) =>{
 
+
+ 
 
 	return(
         <Div>
-        <Title className='headerPage' level="1">Другое</Title>
+        <Title className='headerPage' level="1">Иное</Title>
         <Spacing size={16} />
-        <Text>Данные виды мусора не подлежат переработке в нашей
-        стране или могут быть переработаны лишь частично.
-        приема.
+
+        <Title  className='forColor' level="2" >Иное - это...</Title>
+
+        <Spacing size={8} />
+        <Text>Виды отходов, не подлежащие переработке в нашей
+        стране или которые могут быть переработаны лишь частично. 
         </Text>
 
 
+        <Spacing size={16} />
+
+
+        <Title  className='forColor' level="2" >Что можно сдать?</Title>
+
+        <Spacing size={8} />
+
+
         <Text>
-            <div><span className="forColor">•</span>Другой пластик</div>
+             
+            <div><span className="forColor">•</span>Другой пластик.</div>
             <br />
-            <div><span className="forColor">•</span>Шарики</div>
+            <div><span className="forColor">•</span>Шарики.</div>
             <br />
-            <div><span className="forColor">•</span>Пластиковые карты</div>
+            <div><span className="forColor">•</span>Пластиковые карты.</div>
             <br />
-            <div><span className="forColor">•</span>Резина</div>
+            <div><span className="forColor">•</span>Резину.</div>
             <br />
-            <div><span className="forColor">•</span>Бумажные стаканчики</div>
+            <div><span className="forColor">•</span>Бумажные стаканчики.</div>
             <br />
-            <div><span className="forColor">•</span>Баллончики от аэрозолей</div>
+            <div><span className="forColor">•</span>Баллончики от аэрозолей.</div>
             <br />
         </Text>
 

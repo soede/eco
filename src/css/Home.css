@@ -1,7 +1,15 @@
+html{
+
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
 .tab-div-h{
     width: 90%;
     
-    transition: all 400ms;
+    transition: all  200ms;
 }
 
 .panelHeader-h{
@@ -11,10 +19,10 @@
 .openCardDiv{
 
     height: 320px; /*анекдот про тракториста*/
-
+    width: 90%;
     
     
-    transition: all 400ms;
+    transition: height 100ms;
 
 }
 
@@ -22,9 +30,9 @@
 
     height: 64px; 
 
+    width: 90%;
     
-    
-    transition: all 400ms;
+    transition: height 100ms;
     
 }
 
@@ -45,7 +53,17 @@
     white-space: nowrap; 
     overflow: hidden;
 }
-
+.closeHeadTitleNotLoc{
+    position: absolute;
+    width: 70%;
+    left: 5%;
+    right: 10%;
+    top: 50%;
+    margin-top: -0.625em; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
 .openHeadTitle{
     position: absolute;
     left: 5%;
@@ -217,6 +235,12 @@
 
 .titleCell{
     width: 90px;
+}
+
+.titleCellOneLine{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 .itemCell{ 

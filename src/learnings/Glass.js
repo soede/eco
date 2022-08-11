@@ -11,7 +11,7 @@ import CountDistance from '../tools/CountDistance'; //расчет дистан�
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
-const Glass = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
+const Glass = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) =>{
 
 
 	return(

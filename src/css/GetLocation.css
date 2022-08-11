@@ -33,10 +33,12 @@
 .mainButton-get{
     position: absolute;
     height: 54px;
-    left: 8.97%;
-    right: 8.72%;
+    left: 40px;
+    right: 40px;
     background-color: #2688EB;
-  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     
     bottom: 84px;
     
@@ -45,10 +47,12 @@
 
 .notNowButton{
     position: absolute; 
-    left: 8.97%;
-    right: 8.72%;
+    left: 40px;
+    right: 40px;
     
     bottom: 23px;
-  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }

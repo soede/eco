@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import PropTypes from 'prop-types';
 
-import { Panel, PanelHeader, PanelHeaderBack, Title, Div, Button} from '@vkontakte/vkui';
-import { ReactComponent as Statistic } from '../img/statistics.svg';
+import { Panel, Alert, Title, Div, Button} from '@vkontakte/vkui';
+ 
  
 import axios from 'axios';
 import '../css/GetLocation.css';
@@ -12,16 +12,39 @@ import '../css/GetLocation.css';
 import { Icon28LocationMapOutline } from '@vkontakte/icons'; 
 
 
-const GetLocation = ({ id, go, goTo, setUserLoc, userLoc, setPopout, setLocationComplete, setUserLocationforHead}) => {
+const GetLocation = ({ id,setPopout, go, goTo, setUserLoc, userLoc, setLocationComplete, setUserLocationforHead}) => {
+	async function ifClick(){
+		async function notGetLoc(){
+			await setPopout(null)
+			await goTo('home'); 
+		}
+		notGetLoc()
+	}
+
+	async function viewAlert(){
+		await setPopout(<Alert 
+			actions={[
+			{
+			title: "ок",
+			mode: "cancel",
+			autoclose: true, 
+			},]}
+			actionsLayout="vertical" 
+			header="Не удалось определить локацию"
+			text="Попробуйте включить доступ к геоданным на устройстве"
+			onClose={()=>{
+				ifClick()
+			}}/>) 
+	}
+
+	
+
 
 	useEffect(() => { 
 		async function fetchData() {
 
-			await setPopout(null);
-			 
-			
-
-
+			await setPopout(null); 
+		 
 		} 
 		fetchData();
 		
@@ -35,7 +58,9 @@ const GetLocation = ({ id, go, goTo, setUserLoc, userLoc, setPopout, setLocation
 
 	async function getUserLocation(e){
 
-		
+
+		try{
+					
 		
 		const userLocation = await bridge.send("VKWebAppGetGeodata");
 		 
@@ -53,12 +78,14 @@ const GetLocation = ({ id, go, goTo, setUserLoc, userLoc, setPopout, setLocation
 					value: "true"
 				});
 				await setUserLoc(newItem);
+				await goTo('home');
 				 
 		})
 			
 			
 		}else{
-			alert('Произошла ошибка') 
+			
+			viewAlert()
 		}
 	 
 
@@ -66,6 +93,9 @@ const GetLocation = ({ id, go, goTo, setUserLoc, userLoc, setPopout, setLocation
 			key: "onBoard",
 			value: "false"
 		});
+		}catch(e){
+			viewAlert()
+		}
 
 		 
 		
@@ -100,23 +130,24 @@ const GetLocation = ({ id, go, goTo, setUserLoc, userLoc, setPopout, setLocation
 			
 
 			
-			<div className='button-div-s'>
+			 
 
 			<Div>
 				<Button
+				data-to="home"
+				className='mainButton-get'
+				appearance='accent'
+				size='l'
 				onClick={(e)=>{
 					async function goPage(e){
 						await getUserLocation(e);
-						await goTo('home');
+						
 						
 					}
 					goPage(e)
 					
 				}} 
-				data-to="home"
-				className='mainButton-get'
-				appearance='accent'
-				size='l'
+				
 				>Предоставить</Button> 
 			</Div>
 
@@ -140,8 +171,7 @@ const GetLocation = ({ id, go, goTo, setUserLoc, userLoc, setPopout, setLocation
             </Div>
             
             
-
-			</div>
+ 
 		
         
           

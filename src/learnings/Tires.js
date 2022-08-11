@@ -9,7 +9,7 @@ import { Panel, Div, PanelHeader, Spacing, Button, Text, PanelHeaderBack, Title,
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
-const Tires = ({setOpenPoint, goTo, pointsFullArray}) =>{
+const Tires = ({setOpenPoint, goTo, pointsFullArray }) =>{
 
 
 	return(
@@ -21,8 +21,8 @@ const Tires = ({setOpenPoint, goTo, pointsFullArray}) =>{
             <Spacing size={8} />
             <Text>
 
-            Шины не превышающие размер R22,5, без дисков, допускаются проколы и порезы, но сами шины должны быть относительно целыми, куски шин не принимаются.
-           
+            Шины, не превышающие размер R22.5, без дисков. Допускаются проколы и порезы, но сами шины должны быть относительно целыми. Куски шин не принимаются.
+
             </Text>
 
             <Spacing size={16} />
@@ -30,8 +30,9 @@ const Tires = ({setOpenPoint, goTo, pointsFullArray}) =>{
             <Spacing size={8} />
             <Text>
 
-            Шины должны быть относительно чистыми и не содержать земли и мусора внутри
-            Один человек может сдать в контейнер один комплект из четырех шин.
+            Шины должны быть относительно чистыми и не содержать земли и мусора внутри.
+            Один человек может сдать в контейнер один комплект из четырёх шин.
+
 
             </Text>
 

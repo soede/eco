@@ -36,10 +36,10 @@ function Icons (id){
         {0: <Icon28WarningTriangleOutline fill={colorOn} width={36} height={36} className="scroll"/>, 1: <Icon28WarningTriangleOutline fill={colorOff}/>, 2: <Icon28WarningTriangleOutline fill={colorOn}/>,  "text":"Опасные отходы"},
         {0: <TetraOn width={36} height={36} className="scroll" />, 1: <TetraOff height={23} />, 2: <TetraOn height={23} />,  "text":"Тетра Пак"},
         {0: <EnergyOn width={36} height={36} className="scroll"/>, 1: <EnergyOff width={23} height={23} />, 2: <EnergyOn width={23} height={23} />,  "text":"Батарейки"},
-        {0: <OtherOn  width={36} height={36} className="scroll"/>, 1: <OtherOff  width={24} height={24}/>, 2: <OtherOn width={24} height={24} />,  "text":"Другое"},
+        {0: <OtherOn  width={36} height={36} className="scroll"/>, 1: <OtherOff  width={24} height={24}/>, 2: <OtherOn width={24} height={24} />,  "text":"Иное"},
     ] 
 
-    iconsForLearn.unshift(...iconsForLearn.splice(id,1));
+    id===0?{}:iconsForLearn.unshift(...iconsForLearn.splice(id,1));
 
     
     

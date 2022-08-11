@@ -13,7 +13,7 @@ import CountDistance from '../tools/CountDistance'; //расчет дистан�
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
-const TetraPak = ({setOpenPoint, goTo, pointsFullArray}) =>{
+const TetraPak = ({setOpenPoint, goTo, pointsFullArray }) =>{
 
 
 	return(
@@ -24,7 +24,7 @@ const TetraPak = ({setOpenPoint, goTo, pointsFullArray}) =>{
         <Spacing size={8} />
         <Text>
 
-        Tetre pac, Pure pac, Tralin pak, Комбиблок и др. —
+        Tetra pak, Pure pak, Tralin pak, Комбиблок и др. —
         многокомпонентная упаковка, состоящая из картона,
         полиэтилена и фольги. Иногда на упаковках тетрапак
         или аналогичных стоит маркировка РАР 81, 82 или 84 —
@@ -34,7 +34,7 @@ const TetraPak = ({setOpenPoint, goTo, pointsFullArray}) =>{
         </Text>
 
         <Spacing size={16} />
-        <Title  className='forColor' level="2" >Что если не тетрапак?</Title>
+        <Title  className='forColor' level="2" >Что если не тетра пак?</Title>
         <Spacing size={8} />
         <Text>
 

@@ -8,7 +8,7 @@ import CountDistance from '../tools/CountDistance'; //расчет дистан�
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
-const Paper = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
+const Paper = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) =>{
 
 
 	return(
@@ -17,11 +17,11 @@ const Paper = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
             <Spacing size={16} />
             <Title  className='forColor' level="2" >Что можно сдать?</Title>
             <Spacing size={8} />
-            <Text>Газеты, книги, офисную бумагу, альбомы, тетради и листовки, а также коробки и картон, в том числе гофрированный. Бумажную упаковку с маркировками 20, 21 и 22 (PAP) .</Text>
+            <Text>Газеты, книги, офисную бумагу, альбомы, тетради и листовки, а также коробки и картон, в том числе гофрированный. Бумажную упаковку с маркировками 20, 21 и 22 (PAP).</Text>
             <Spacing size={16} />
-            <Title className='forColor' level="2" >Что нелья сдавать?</Title>
+            <Title className='forColor' level="2" >Что нельзя сдавать?</Title>
             <Spacing size={8} />
-            <Text>Фотографии, чеки и другую термобумагу, туалетную бумагу и салфетки, бумагу для запекания, а также грязную - жирную или масляную. Бумажные стаканчики и любую бумажную одноразовую посуду, которая покрыта пленкой. </Text>
+            <Text>Фотографии, чеки и другую термобумагу, туалетную бумагу и салфетки, бумагу для запекания, а также грязную - жирную или масляную. Бумажные стаканчики и любую бумажную одноразовую посуду, которая покрыта пленкой.</Text>
             <Spacing size={16} />
             <Title className='forColor' level="2" >Как подготовить к переработке?</Title>
             <Spacing size={8} />
@@ -61,9 +61,7 @@ const Paper = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
                         async function checkObj (itCategoryz){
                             if(itCategoryz.length>100){
                                 var sorArrayws = await itCategoryz.sort((a, b) =>CountDistance(userLocationforHead.lat,  userLocationforHead.long, a.lat, a.log) > CountDistance( userLocationforHead.lat,userLocationforHead.long, b.lat, b.log) ? 1 : -1)
-                                
-                                await console.log("твоя позиция")
-                                await console.log(userLocationforHead.long)
+                                 
                                 await setOpenPoint(sorArrayws.slice(0, 48));
                             }else{
                                 await setOpenPoint(itCategoryz);

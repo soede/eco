@@ -1,2 +1,6 @@
 .MapContainer {
 }
+
+.hideScroll{
+    overflow: hidden;
+}

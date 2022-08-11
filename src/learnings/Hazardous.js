@@ -10,36 +10,45 @@ import { Panel, Div, PanelHeader, Spacing, Button, Text, PanelHeaderBack, Title,
 
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
-const Hazardous = ({setOpenPoint, goTo, pointsFullArray}) =>{
+const Hazardous = ({setOpenPoint, goTo, pointsFullArray }) =>{
 
 
 	return(
         <Div>
         <Title className='headerPage' level="1">Опасные отходы</Title>
         <Spacing size={16} />
-        <Text>Эти отходы нельзя выбрасывать в общий контейнер, для
+
+
+        <Title  className='forColor' level="2" >Опасные отходы - это...</Title>
+
+        <Spacing size={8} />
+
+        <Text>Отходы, которые нельзя выбрасывать в общий контейнер, для
         их переработки и утилизации есть специальные пункты
         приема.
         </Text>
+
+
         <Spacing size={16} />
-        <Title  className='forColor' level="2" >Что нужно сдать?</Title>
+
+
+        <Title  className='forColor' level="2" >Что можно сдать?</Title>
  
-
-
+        <Spacing size={8} />
         <Text>
-            <div><span className="forColor">•</span>Лекарства</div>
+            <div><span className="forColor">•</span>Лекарства.</div>
             <br />
-            <div><span className="forColor">•</span>Градусники</div>
+            <div><span className="forColor">•</span>Градусники.</div>
             <br />
-            <div><span className="forColor">•</span>Аккумуляторы </div>
+            <div><span className="forColor">•</span>Аккумуляторы. </div>
             <br />
-            <div><span className="forColor">•</span>Баллончики от аэрозолей</div>
+            <div><span className="forColor">•</span>Баллончики от аэрозолей.</div>
             <br />
-            <div><span className="forColor">•</span>Бытовая техника</div>
+            <div><span className="forColor">•</span>Бытовая техника.</div>
             <br />
-            <div><span className="forColor">•</span>Картриджи</div>
+            <div><span className="forColor">•</span>Картриджи.</div>
             <br />
-            <div><span className="forColor">•</span>Шины</div>
+            <div><span className="forColor">•</span>Шины.</div>
             <br />
         </Text>
 

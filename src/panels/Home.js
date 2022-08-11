@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import bridge from '@vkontakte/vk-bridge';
 import axios from 'axios';
@@ -21,7 +21,7 @@ import NotShareBanner from '../Home/NotShareBanner/NotShareBanner';
 import NotLocationBanner from '../Home/NotLocationBanner/NotLocationBanner';
 
 
-const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, locationComplete, setLocationComplete  }) => {
+const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setActiveModal, go, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, locationComplete, setLocationComplete, setFirstStartPages, setSelect }) => {
 	
 	
  
@@ -30,11 +30,14 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go,
 	var bannerList = [<NotShareBanner go={go}/>]
 
 	 
-	locationComplete === true? {}:bannerList.unshift(<NotLocationBanner setUserLoc={setUserLoc} setLocationComplete={setLocationComplete} setPopout={setPopout} go={go} setUserLocationforHead={setUserLocationforHead}/>)
+	locationComplete === true? {}:bannerList.unshift(<NotLocationBanner setActiveModal ={setActiveModal} setUserLoc={setUserLoc} setLocationComplete={setLocationComplete} setPopout={setPopout} go={go} setUserLocationforHead={setUserLocationforHead}/>)
 
 
 	useEffect(() => {
+
 		 
+		setSelect(0)
+		setFirstStartPages(true)
 		
 
 		const sortPoints = () =>{
@@ -116,7 +119,7 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go,
 	const closeCard =(item) => { 
 		return(
 			<div> 
-				<Title className='closeHeadTitle' level="1" weight="2"> {item.Category} </Title> 
+				<Title className={userLoc.access? 'closeHeadTitle':'closeHeadTitleNotLoc'} level="1" weight="2"> {item.Category} </Title> 
 				<Icon28ChevronDownOutline className='chevronDownIcon' width={28} height={28} />
 				{userLocationforHead.access  && <Title className='distanceToPointClose' level="2" weight="2"> {UnitsDefine(CountDistance(userLocationforHead.lat, userLocationforHead.long,  item.lat, item.log ))} </Title>}
 			</div>
@@ -127,7 +130,7 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go,
 
 
 		 
-		var y = 0; //тест пулasas
+		var y = 0; //тест пулл
 	  
 
 
@@ -135,15 +138,12 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go,
 		<Panel id={id}> 
 
 
-<div>
+				<div>
 					<Group className='bannersGroup' header={ <Title style={{ padding: 20 }} level="1" >Подсказки</Title>}>
 
-						<CardScroll  
-						className='cardScroll' >
-
-							 
-
-
+						<CardScroll   
+						showArrows='always'
+						className='cardScroll'>
 								{bannerList && bannerList.length > 0 && bannerList.map((item, index)=>{
 									return(
 										<div key={index}>
@@ -180,8 +180,7 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go,
 							});
 						}
 
-					}}> Узнайте как сдать </Title>} >
-
+					}}>Узнайте как сдать </Title>} > 
 						<HorizontalScroll 
 						getScrollToLeft={(i) => i - 120}
             			getScrollToRight={(i) => i + 120}>
@@ -189,6 +188,7 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go,
 							<div style={{ display: "flex" }}>
 
 
+								<React.Fragment>
 								{iconsList(0).map((item, index)=>{
 									return(
 										<HorizontalCell key={index.toString()}className='itemCell' onClick={(event)=>{
@@ -201,13 +201,14 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead,  go,
 														{item[0]}
 													</div>
 													<div> 
-														<Title className='titleCell' style={{color:'#99A2AD'}} level="3"> {item.text}</Title>
+														<Title className={item.text.length>11?'titleCell':'titleCellOneLine'} style={{color:'#99A2AD'}} level="3"> {item.text}</Title>
 													</div>
 												</div>
 											</Card>
 										</HorizontalCell>
 									)
 								})}
+								</React.Fragment>
 					
 							</div>				
 						</HorizontalScroll>

@@ -2,6 +2,17 @@
     
     margin-left: 50px; 
     margin-top: -41px;
+    height: 48px;
+    max-height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
 }
 
 .iconDiv-banner{
@@ -23,6 +34,15 @@
     margin-left: 130px; 
     margin-top: 15px;
 }
+.cardScroll-def{
+    margin-top: 10px;
+    margin-bottom: 14px; 
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    
+    
+    border-radius: 20px;
 
-.cardScroll-banners{
 }

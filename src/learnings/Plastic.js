@@ -24,8 +24,6 @@ const Plastic = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
                 <br />
                 <div><span className="forColor">•</span>Высокоплотный полиэтилен — РЕНВ или НОРЕ (2). </div>
                 <br />
-                <div><span className="forColor">•</span>Высокоплотный полиэтилен — РЕНВ или НОРЕ (2). </div>
-                <br />
                 <div><span className="forColor">•</span>Поливинилхлорид — РVС (3)*. </div>
                 <br />
                 <div><span className="forColor">•</span>Низкоплотный полиэтилен — LDPE или REBD (4). </div>
@@ -43,7 +41,7 @@ const Plastic = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
             <Spacing size={8} />
             <Text>
             Пластиковые бутылки, канистры, и иные предметы с маркировкой 01 ПЭТ/РЕТ, 02 ПНД/HDPE. 
-            Пластик с маркировкой 4, 5 и б сложнее перерабатывается и принимается не везде. 
+            Пластик с маркировкой 4, 5 и 6 сложнее перерабатывается и принимается не везде. 
             Лучше уточнять возможность его приема на пунктах переработки. 
             </Text>
             <Spacing size={16} />

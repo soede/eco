@@ -12,7 +12,7 @@ import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
 
-const Metal = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
+const Metal = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) =>{
 
 
 	return(
@@ -40,8 +40,8 @@ const Metal = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =>{
 
         Пластиковая упаковка с металлизированым слоем и
         фольгой, газовые баллоны, потенциально опасные
-        изделия ( радиоактивные, зараженные,
-        использовавшиеся для хранения ядов, лекарств ит.д.)
+        изделия (радиоактивные, зараженные,
+        использовавшиеся для хранения ядов, лекарств и т.д.).
 
 
         </Text>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol } from '@vkontakte/vkui';
+import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, ModalPage,ModalRoot } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios';
 
@@ -16,7 +16,7 @@ import GetLocation from './panels/GetLocation'
 
 const App = (first) => {
 	const [scheme, setScheme] = useState('bright_light') //тема
-	const [activePanel, setActivePanel] = useState(''); //панель
+	const [activePanel, setActivePanel] = useState('home'); //панель
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);  
 	const [pageId, setPageId] = useState(null); //номер открываемой страницы  
@@ -25,23 +25,26 @@ const App = (first) => {
 	const [userLoc, setUserLoc] = useState({'access': false, 'lat': 30.14958381930907, 'long':59.81261334162472, }) //координаты для счетов
 	const [accessGeo, setAccessFeo] = useState(false); 
 	const [pointsFullArray, setPointsFullArray] = useState([])
+ 
+//pages
+	const [itFirstStartPages, setFirstStartPages] = useState(true)
+	const [select, setSelect] = useState(0)
+ 
 
 	const [userLocationforHead, setUserLocationforHead] = useState({'access': false, 'lat': 30.14958381930907, 'long':59.81261334162472, })
  
 
-	//pages
-	var [itFirstStartPages, setFirstStartPages] = useState(true)
-    
-    var firstStartPage = true
-	
-	const [select, setSelect] = useState(0)
-	
-
+	const [viewPages, setViewPages] = useState(false)
 
 	//banners
 	var [locationComplete, setLocationComplete] = useState(false)
 
 
+
+	//modals
+	const [activeModal, setActiveModal] =  useState(false);
+
+ 
 
 	useEffect(() => {
 		async function checkFirst(){
@@ -188,10 +191,9 @@ const App = (first) => {
 
  
 
-			const thisWidth = await document.documentElement.clientWidth;
+			const thisWidth = window.innerWidth 
 
-			const thisHeight = await document.documentElement.clientHeight;
-
+			const thisHeight = window.innerHeight 
 
 			const getAppInfo = await bridge.send("VKWebAppGetClientVersion");
 
@@ -322,7 +324,20 @@ const App = (first) => {
 	 
 
  
+	useEffect(()=>{
+		const thisWidth = window.innerWidth 
 
+		const thisHeight = window.innerHeight 
+
+		const getAppInfo = bridge.send("VKWebAppGetClientVersion");
+
+		if(getAppInfo.platform === "web"){
+			bridge.send("VKWebAppResizeWindow", {"width": 
+			thisWidth, "height": 
+			thisHeight});
+		}//ширина длина для пк
+
+	}, [window.innerWidth ])
 
 	const restatePageId= (to) => {
 		setPageId(to)
@@ -355,25 +370,35 @@ const App = (first) => {
 
 
 
-	useEffect(() => {
+	useEffect(() => {  
 		const hash = [...new Set(window.location.hash.slice(1).split("/"))] .join("/");
 		 window.location.assign( hash && !hash.includes(activePanel) ? `#${hash}/${activePanel}` : hash ? `#${hash}` : `#${activePanel}` );
 		 }, [activePanel]); 
 		 
 		 const handleHashChange = useCallback(() => { 
-			const hash = window.location.hash.slice(1); 
 			
+			const hash = window.location.hash.slice(1); 
+			 
 			if (!hash) {
-				 setActivePanel('home');
-				 bridge.send("VKWebAppSetLocation", {"location": 'home'});
+				 setActivePanel('home'); 
 			} else {
-				setActivePanel(hash.split("/")[hash.split("/").length - 1])
+				 
+				setActivePanel(viewPages&&hash.split("/")[hash.split("/").length - 1]==='pages'?'home':hash.split("/")[hash.split("/").length - 1])
+				 
 				 } }, []);
 	useEffect(() => { window.addEventListener("hashchange", handleHashChange); }, []);
 
 
-
-
+	const modal = (
+		<ModalRoot activeModal={activeModal}>
+		  <ModalPage
+			id={'test'} 
+			settlingHeight={100} >
+			<h1> asja</h1>
+	  		</ModalPage> 
+		</ModalRoot>
+	  );
+	
 
 
 
@@ -382,13 +407,13 @@ const App = (first) => {
 		<ConfigProvider scheme={scheme}>
 			<AdaptivityProvider>
 				<AppRoot>
-					<SplitLayout popout={popout}>
+					<SplitLayout popout={popout} modal={modal}>
 						<SplitCol>
-							<View activePanel={activePanel}>
+							<View className='fullScreen' activePanel={activePanel}>
 								<Statistics id='statistics' go={go}  setPopout={setPopout}/>
 								<Preview id='preview' go={go} /> 
-								<Home id='home' setLocationComplete={setLocationComplete} setUserLocationforHead={setUserLocationforHead} userLocationforHead={userLocationforHead} setUserLoc={setUserLoc} fetchedUser={fetchedUser} go={go} points={points} setPopout={setPopout} setOpenPoint={setOpenPoint} restatePageId={restatePageId} userLoc={userLoc} setPoints={setPoints} accessGeo={accessGeo}  locationComplete={locationComplete}/>
-								<Pages id='pages'  setPopout={setPopout} userLocationforHead={userLocationforHead} go={go} userLoc={userLoc} pageId={pageId} restatePageId={restatePageId} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} goTo={goTo} itFirstStartPages={itFirstStartPages} firstStartPage={firstStartPage} setFirstStartPages={setFirstStartPages} select={select} setSelect={setSelect}/>
+								<Home id='home' setActiveModal={setActiveModal} setFirstStartPages={setFirstStartPages} setSelect={setSelect} setLocationComplete={setLocationComplete} setUserLocationforHead={setUserLocationforHead} userLocationforHead={userLocationforHead} setUserLoc={setUserLoc} fetchedUser={fetchedUser} go={go} points={points} setPopout={setPopout} setOpenPoint={setOpenPoint} restatePageId={restatePageId} userLoc={userLoc} setPoints={setPoints} accessGeo={accessGeo}  locationComplete={locationComplete}/>
+								<Pages id='pages' setViewPages={setViewPages} itFirstStartPages={itFirstStartPages} setFirstStartPages={setFirstStartPages} select={select} setSelect={setSelect} setPopout={setPopout} userLocationforHead={userLocationforHead} go={go} userLoc={userLoc} pageId={pageId} restatePageId={restatePageId} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} goTo={goTo} />
 								<MapPanel id='mapPanel'fetchedUser={fetchedUser} go={go} points={points} openPoint={openPoint} goTo={goTo} toBack={toBack}/>
 								<GetLocation id='getLoc' goTo={goTo}  setUserLocationforHead={setUserLocationforHead} go={go} setLocationComplete={setLocationComplete} setUserLoc={setUserLoc} userLoc={userLoc} setPopout={setPopout} />
 							</View>

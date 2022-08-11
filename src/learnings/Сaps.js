@@ -13,7 +13,7 @@ import CountDistance from '../tools/CountDistance'; //расчет дистан�
 import { Icon28LocationMapOutline } from '@vkontakte/icons';
 
 
-const Сaps = ({setOpenPoint, goTo, pointsFullArray,  userLocationforHead}) =>{
+const Сaps = ({setOpenPoint, goTo, pointsFullArray,  userLocationforHead }) =>{
 
 
 	return(
@@ -24,18 +24,18 @@ const Сaps = ({setOpenPoint, goTo, pointsFullArray,  userLocationforHead}) =>{
 
         <Title  className='forColor' level="2" >Что можно сдать?</Title>
         <Spacing size={8} />
-        <Text>Крышечки от 5-литровых канистр из под воды, непищевых жидкостей: стеклоомывателей; Любые другие крышечки с маркировкой в треугольнике «2», «02», надписью HDPE, РЕ-HD, PE; </Text>
+        <Text>Крышечки от 5-литровых канистр из под воды, непищевых жидкостей: стеклоомывателей. Любые другие крышечки с маркировкой в треугольнике «2», «02», надписью HDPE, РЕ-HD, PE. </Text>
 
         <Spacing size={16} />
 
         <Title  className='forColor' level="2" >Что нельзя сдать?</Title>
         <Spacing size={8} />
         <Text>
-            <div><span className="forColor">•</span>Крышки от кофе</div>
+            <div><span className="forColor">•</span>Крышки от кофе.</div>
             <br />
             <div><span class="forColor">•</span>Крышки от тюбиков зубной пасты.</div>
             <br />
-            <div><span className="forColor">•</span>Крышки от косметических средств</div>
+            <div><span className="forColor">•</span>Крышки от косметических средств.</div>
             <br /> 
         </Text>
 

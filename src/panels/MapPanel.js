@@ -22,8 +22,8 @@ const MapPanel = ({ id, go, points, openPoint, goTo, toBack, fetchedUser}) => {/
 	 
 	try{
 		return(
-			<Panel id={id}>
-				  <PanelHeader left={<PanelHeaderBack onClick={toBack}  />}className='ph-paper'> Пункты </PanelHeader>
+			<Panel id={id} className='hideScroll'>
+				<PanelHeader left={<PanelHeaderBack onClick={toBack}  />}className='ph-paper'> Пункты </PanelHeader>
 	
 	
 	
@@ -33,8 +33,8 @@ const MapPanel = ({ id, go, points, openPoint, goTo, toBack, fetchedUser}) => {/
 				longitude={openPoint[0].log}
 				latitude={openPoint[0].lat}
 				zoomLevel={5}
-				height={document.documentElement.clientHeight- 60}
-				   width={document.documentElement.clientWidth}
+				height={window.innerHeight }
+				width={window.innerWidth}
 			>
 	 
 	

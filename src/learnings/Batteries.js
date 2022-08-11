@@ -12,14 +12,13 @@ import CountDistance from '../tools/CountDistance'; //расчет дистан�
 
 
 
-const Batteries = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) => {
+const Batteries = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) => {
 
 
 	return(
         <Div>
         <Title className='headerPage' level="1">Батарейки</Title>
-        <Spacing size={16} />
-        <Spacing size={16} />
+        <Spacing size={16} /> 
         <Title  className='forColor' level="2" >Что можно сдать?</Title>
         <Spacing size={8} />
         <Text>«Пальчиковые» батарейки, батарейки-«таблетки»,
@@ -31,13 +30,13 @@ const Batteries = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead}) =
         <Spacing size={8} />
         <Text>Автомобильные аккумуляторы, аккумуляторы от UPS/
         ИБП (принимают отдельно в пунктах при автосервисах
-        и магазинах ). НЕ выбрасывайте целую или
+        и магазинах). НЕ выбрасывайте целую или
         поврежденную батарейку в общий контейнер. Если
         батарейка повреждена, поместите ее в отдельную
         герметичную тару.</Text>
 
         <Spacing size={16} />
-        <Title  className='forColor' level="2" > Как подготовить к переработке?</Title>
+        <Title  className='forColor' level="2" >Как подготовить к переработке?</Title>
         <Spacing size={8} />
         <Text>
 

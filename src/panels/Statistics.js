@@ -22,9 +22,7 @@ const Statistics = ({ id, go, setPopout}) => {
 
 
  
-
-		console.log('завер')
-
+ 
 	  
 	}
 	
@@ -39,9 +37,9 @@ const Statistics = ({ id, go, setPopout}) => {
 		<Div className='main-s'>
 			<Div  className='text-div-s' >
 			<Title className='title-s' level="1"> В чём проблема? </Title>
-			<Title className="discription-s" level="3">Площадь свалок в России равна 4 кипрам и эта цифра растёт с каждым годом </Title>
+			<Title className="discription-s" level="2" weight='2'>Площадь свалок в России равна 4 Кипрам и эта цифра растёт с каждым годом </Title>
 			</Div >
-			<Div  style={{ paddingTop: 60, paddingLeft: 50 }}>
+			<Div  style={{ paddingTop: 60, paddingLeft: 10}}>
 				 <Statistic className='svg-s'/>
 			 </Div>
 			

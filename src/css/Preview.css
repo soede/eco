@@ -35,24 +35,16 @@
 }
 
 .header-p{
-
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -ms-line-clamp: 1;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
-   
     
-
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
     /* identical to box height */
 
     text-align: center;
+
+    
+   
+    
+
+    
 
 
     /* Inside auto layout */
@@ -63,12 +55,7 @@
 }
 
 .colortext-p{
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    /* identical to box height */
+     
 
     text-align: center;
     letter-spacing: 0.0025em;
@@ -87,11 +74,7 @@
 .discription-p{
 /* есо поможет тебе в этом */
 
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+    
     /* identical to box height */
 
     text-align: center;
@@ -129,22 +112,16 @@
     margin-top: auto;
 }
 
-.elements-p{
-
-}
+ 
 
 .elememt-p{
-    font-family: 'SF Pro Rounded';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 18px;
-    letter-spacing: -0.0025em;
+    
 }
 
 .button-div-p{
     position: relative;;
     top: 400px;
+    margin-top: 20px;
     margin-bottom: 10px;
     bottom: 10px;
   
