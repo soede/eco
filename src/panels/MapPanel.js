@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import bridge from '@vkontakte/vk-bridge'; 
-import { Panel, ScreenSpinner, PanelHeader, PanelHeaderBack, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card, Text  } from '@vkontakte/vkui';
+import { Panel, ScreenSpinner, PanelHeader, PanelHeaderBack, Header, Button, Group, Div, Title, TabsItem, Tabs, CardGrid, Card, Alert  } from '@vkontakte/vkui';
 
 
 import { AppleMaps, Annotation } from '@zandor300/react-apple-mapkitjs';
@@ -16,9 +16,24 @@ import EmojiDefine from '../lists/EmojiDefine';
 import { Icon28ChevronDownOutline, Icon28ChevronUpOutline, Icon28LocationMapOutline} from '@vkontakte/icons'; 
 
 
-const MapPanel = ({ id, go, points, openPoint, goTo, toBack, fetchedUser}) => {//то самый
+const MapPanel = ({ id, go, points, openPoint, goTo, toBack, fetchedUser, setPopout}) => { 
 	
-
+async function viewAlert(){
+	await goTo('home')
+	await setPopout(<Alert 
+		actions={[
+		{
+		title: "ок",
+		mode: "cancel",
+		autoclose: true, 
+		},]}
+		actionsLayout="vertical" 
+		header="Не удалось загрузить карту"
+		text="Попробуйте обновить приложение до последней версии"
+		onClose={()=>{
+			setPopout(null)
+		}}/>) 
+	}
 	 
 	try{
 		return(
@@ -77,7 +92,9 @@ const MapPanel = ({ id, go, points, openPoint, goTo, toBack, fetchedUser}) => {/
 			</Panel>
 		);
 	}catch(e){
-
+		
+		
+		viewAlert()
 	}
 
 

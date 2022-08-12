@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, ModalPage,ModalRoot } from '@vkontakte/vkui';
+import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, ModalRoot, Alert  } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios';
 
@@ -11,12 +11,15 @@ import Statistics from './panels/Statistics';
 import Preview from './panels/Preview';
 import Pages from './learnings/Pages';
 import MapPanel from './panels/MapPanel'
-import GetLocation from './panels/GetLocation'  
+import GetLocation from './panels/GetLocation';
+import GetLoc from './modals/GetLoc';
 
 
 const App = (first) => {
 	const [scheme, setScheme] = useState('bright_light') //тема
 	const [activePanel, setActivePanel] = useState('home'); //панель
+	
+	const [activeModal, setActiveModal] = React.useState(false);
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);  
 	const [pageId, setPageId] = useState(null); //номер открываемой страницы  
@@ -25,6 +28,9 @@ const App = (first) => {
 	const [userLoc, setUserLoc] = useState({'access': false, 'lat': 30.14958381930907, 'long':59.81261334162472, }) //координаты для счетов
 	const [accessGeo, setAccessFeo] = useState(false); 
 	const [pointsFullArray, setPointsFullArray] = useState([])
+
+	const [firstStart, setFirstStart] = useState(true)
+ 
  
 //pages
 	const [itFirstStartPages, setFirstStartPages] = useState(true)
@@ -39,26 +45,20 @@ const App = (first) => {
 	//banners
 	var [locationComplete, setLocationComplete] = useState(false)
 
-
-
-	//modals
-	const [activeModal, setActiveModal] =  useState(false);
-
  
-
 	useEffect(() => {
 		async function checkFirst(){
 			
 			try{
-				if(firstStart === true){
+				if(firstStart === true){ 
 					const geoGet = await (await bridge.send('VKWebAppStorageGet', {keys: ['geoAccess']})).keys[0].value
 	
-					if(geoGet==='true'){
-						 
+					if(geoGet==='true'){ 
 						const permissionsForLocation = await bridge.send("VKWebAppGetGrantedPermissions")
-
-
-						if(permissionsForLocation.permissions.includes("location")){
+						const getAppInfo = await bridge.send("VKWebAppGetClientVersion");
+ 
+						if(permissionsForLocation.permissions.includes("location") && getAppInfo.platform === "android"||getAppInfo.platform === "ios"){
+							 
 							await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client`).then(async function (response) {
 							const geo= response.data 
 							const newItem = await {'access': true,
@@ -159,6 +159,7 @@ const App = (first) => {
 	
 	
 				await response.data.data.length?accessSuccess(response.data.data.slice(0, 13)) :{}//
+				await setPopout(null);
 			})
 				.catch(function (error) {
 					console.warn(error);
@@ -293,15 +294,16 @@ const App = (first) => {
   
   
 				if(keysValue === "false"){ 
-					await setActivePanel('home') 
+					await setActivePanel('home')  
 
 
 				}else if(keysValue === "false-notLoc"){
 					
 					
-					await setActivePanel('home')
+					await setActivePanel('home') 
 				}else{
 					await setActivePanel('statistics')
+					
 				}
 				 
 			}catch(e){ 
@@ -346,24 +348,25 @@ const App = (first) => {
 
 
 	const goTo = (to) => {
-		setActivePanel(to);
+		setActivePanel(to); 
 		
 	};
 
 	
 
 	const go = (e) => {
-		setActivePanel(e.currentTarget.dataset.to);
+		setActivePanel(e.currentTarget.dataset.to); 
 	};
 
 
 
 	function toBack (){
 		if(openPoint.length === 1){
-			setActivePanel('home');
+			setActivePanel('home'); 
 			
 		}else{
 			setActivePanel('pages');
+			 
 		}
 		   	
 	}
@@ -381,25 +384,29 @@ const App = (first) => {
 			 
 			if (!hash) {
 				 setActivePanel('home'); 
+				  
 			} else {
 				 
-				setActivePanel(viewPages&&hash.split("/")[hash.split("/").length - 1]==='pages'?'home':hash.split("/")[hash.split("/").length - 1])
+				 
+				setActivePanel(hash.split("/")[hash.split("/").length - 1])
 				 
 				 } }, []);
 	useEffect(() => { window.addEventListener("hashchange", handleHashChange); }, []);
 
 
-	const modal = (
-		<ModalRoot activeModal={activeModal}>
-		  <ModalPage
-			id={'test'} 
-			settlingHeight={100} >
-			<h1> asja</h1>
-	  		</ModalPage> 
-		</ModalRoot>
-	  );
-	
 
+	const modal = (
+		<ModalRoot activeModal={activeModal} onClose={()=>{
+			setActiveModal(null);
+		}}>
+		  <GetLoc id= 'getLocation' setUserLoc={setUserLoc} setUserLocationforHead={setUserLocationforHead} setLocationComplete={setLocationComplete} setActiveModal={setActiveModal} setPopout={setPopout} />
+		</ModalRoot>
+	  );//получить локацию
+
+
+
+
+	  
 
 
 
@@ -414,7 +421,7 @@ const App = (first) => {
 								<Preview id='preview' go={go} /> 
 								<Home id='home' setActiveModal={setActiveModal} setFirstStartPages={setFirstStartPages} setSelect={setSelect} setLocationComplete={setLocationComplete} setUserLocationforHead={setUserLocationforHead} userLocationforHead={userLocationforHead} setUserLoc={setUserLoc} fetchedUser={fetchedUser} go={go} points={points} setPopout={setPopout} setOpenPoint={setOpenPoint} restatePageId={restatePageId} userLoc={userLoc} setPoints={setPoints} accessGeo={accessGeo}  locationComplete={locationComplete}/>
 								<Pages id='pages' setViewPages={setViewPages} itFirstStartPages={itFirstStartPages} setFirstStartPages={setFirstStartPages} select={select} setSelect={setSelect} setPopout={setPopout} userLocationforHead={userLocationforHead} go={go} userLoc={userLoc} pageId={pageId} restatePageId={restatePageId} setOpenPoint={setOpenPoint} pointsFullArray={pointsFullArray} goTo={goTo} />
-								<MapPanel id='mapPanel'fetchedUser={fetchedUser} go={go} points={points} openPoint={openPoint} goTo={goTo} toBack={toBack}/>
+								<MapPanel id='mapPanel' setPopout={setPopout} goTo={goTo} fetchedUser={fetchedUser} go={go} points={points} openPoint={openPoint} toBack={toBack}/>
 								<GetLocation id='getLoc' goTo={goTo}  setUserLocationforHead={setUserLocationforHead} go={go} setLocationComplete={setLocationComplete} setUserLoc={setUserLoc} userLoc={userLoc} setPopout={setPopout} />
 							</View>
 						</SplitCol>

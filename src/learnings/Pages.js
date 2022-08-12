@@ -84,7 +84,7 @@ const Pages = ({ id, go, pageId,setPopout, restatePageId, setViewPages, userLoc,
 
                     <Tabs mode="buttons" className='tab-div-p'>
                     <HorizontalScroll 
-                        showArrows
+                        showArrows={false}
                         getScrollToLeft={(i) => i - 120}
                         getScrollToRight={(i) => i + 120}
                         >

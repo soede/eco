@@ -7,18 +7,15 @@ import { ScreenSpinner, Div, Card, Spacing, Button, Text, PanelHeaderBack, Title
  
 
 import { Icon28LocationMapOutline  } from '@vkontakte/icons'; 
-import { useState } from 'react';
 
 const NotLocationBanner = ({setUserLoc, go, setUserLocationforHead, locationComplete, setLocationComplete, setPopout, setActiveModal}) =>{
-    
-
     
 
 	return(
          
             <Card onClick={()=>{
-                setActiveModal('test')
-            }} data-to='getLoc' mode="shadow" className='cardScroll-active' style={{  width:337, height:122 }}>
+                setActiveModal('getLocation')
+            } } data-to='getLoc' mode="shadow" className='cardScroll-active' style={{  width:337, height:122 }}>
                 <div className='location-div'>
                 <Icon28LocationMapOutline  className='Icon-banner-loc' fill='#2688EB' height={40} width={40}/>
                 

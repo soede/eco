@@ -9,8 +9,8 @@ import '../css/Preview.css';
 
 
 
-const Preview = props => (
-	<Panel id={props.id} className='panel-p'>
+const Preview = ({id, go}) => (
+	<Panel id={id} className='panel-p'>
 
         
 		<Div className='main-p'>
@@ -59,7 +59,7 @@ const Preview = props => (
 
 		<div className='button-div-p'>
 		<Button
-				onClick={props.go} 
+				onClick={go} 
 				data-to="getLoc"
 				className='button-p'
 				appearance='accent'

@@ -21,7 +21,7 @@ import NotShareBanner from '../Home/NotShareBanner/NotShareBanner';
 import NotLocationBanner from '../Home/NotLocationBanner/NotLocationBanner';
 
 
-const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setActiveModal, go, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, locationComplete, setLocationComplete, setFirstStartPages, setSelect }) => {
+const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setActiveModal,  go, points, setPopout, setOpenPoint, restatePageId, userLoc, setPoints, locationComplete, setLocationComplete, setFirstStartPages, setSelect }) => {
 	
 	
  
@@ -30,11 +30,11 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setA
 	var bannerList = [<NotShareBanner go={go}/>]
 
 	 
-	locationComplete === true? {}:bannerList.unshift(<NotLocationBanner setActiveModal ={setActiveModal} setUserLoc={setUserLoc} setLocationComplete={setLocationComplete} setPopout={setPopout} go={go} setUserLocationforHead={setUserLocationforHead}/>)
+	locationComplete === true? {}:bannerList.unshift(<NotLocationBanner setActiveModal={setActiveModal} setUserLoc={setUserLoc} setLocationComplete={setLocationComplete} setPopout={setPopout} go={go} setUserLocationforHead={setUserLocationforHead}/>)
 
 
 	useEffect(() => {
-
+		
 		 
 		setSelect(0)
 		setFirstStartPages(true)
@@ -48,6 +48,8 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setA
 	  
 		sortPoints()
 
+		document.getElementById('scrollToIt').scrollIntoView({ block: "nearest",  behavior: "smooth"} )
+
  
 		async function fetchData() {
 
@@ -59,11 +61,7 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setA
 			 
 
 			
-			 
-			  if(points){ 
-				 setPopout(null);
-				 
-			  }
+			  
 
 			 
 			
@@ -139,10 +137,10 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setA
 
 
 				<div>
-					<Group className='bannersGroup' header={ <Title style={{ padding: 20 }} level="1" >Подсказки</Title>}>
+					<Group id='scrollToIt' className='bannersGroup' header={ <Title style={{ padding: 20 }} level="1" >Подсказки</Title>}>
 
-						<CardScroll   
-						showArrows='always'
+						<CardScroll    
+						showArrows={false}
 						className='cardScroll'>
 								{bannerList && bannerList.length > 0 && bannerList.map((item, index)=>{
 									return(
@@ -160,7 +158,7 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setA
 		
 
 				<div> 
-					<Group className='takeGroup' header={ <Title style={{ padding: 20 }} level="1" onClick={()=>{
+					<Group className='takeGroup' header={ <Title style={{ padding: 20 }} level="1" onClick={()=>{ 
 						y+=1;
 						if(y===5){
 
@@ -182,6 +180,7 @@ const Home = ({ id, setUserLoc,setUserLocationforHead, userLocationforHead, setA
 
 					}}>Узнайте как сдать </Title>} > 
 						<HorizontalScroll 
+						showArrows={false}
 						getScrollToLeft={(i) => i - 120}
             			getScrollToRight={(i) => i + 120}>
 

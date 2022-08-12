@@ -45,6 +45,11 @@
   
   }
 
+.parenForGetLoc{
+    width: 400px;
+    height: 600px;
+}   
+
 .notNowButton{
     position: absolute; 
     left: 40px;

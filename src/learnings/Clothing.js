@@ -32,7 +32,7 @@ const Clothing = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) =
             <div><span className="forColor">•</span>В большинстве пунктов принимают только чистые
             вещи, так что даже рваную одежду придется
             постирать.</div>
-
+            <Spacing size={8} />
             <div><span className="forColor">•</span>Для спецодежды существуют отдельные пункты
             приема. Стирать ее не надо, так как существуют
             специальные методы очистки.</div>

@@ -17,7 +17,7 @@ const Domestic = ({setOpenPoint, goTo, pointsFullArray }) =>{
         <Title  className='forColor' level="2" >Что можно сдать?</Title>
         <Spacing size={8} />
         <Text>
-            <div><span className="forColor">•</span>Компьютерная техника и электронное оборудование.</div>
+            <div><span className="forColor">•</span>Компьютерную технику и электронное оборудование.</div>
             <br />
             <div><span className="forColor">•</span>Телефонные аппараты и мобильные телефоны.</div>
             <br />

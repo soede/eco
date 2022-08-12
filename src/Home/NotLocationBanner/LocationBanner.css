@@ -39,8 +39,8 @@
 .cardScroll-active{
     margin-top: 10px;
     margin-bottom: 14px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 5px;
     padding-bottom: 10px;
     
@@ -51,8 +51,8 @@
 .cardScroll-active:hover{
     margin-top: 10px;
     margin-bottom: 14px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 5px;
     padding-bottom: 10px;
     transition-duration: 500ms;

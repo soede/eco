@@ -21,7 +21,7 @@ const Batteries = ({setOpenPoint, goTo, pointsFullArray, userLocationforHead }) 
         <Spacing size={16} /> 
         <Title  className='forColor' level="2" >Что можно сдать?</Title>
         <Spacing size={8} />
-        <Text>«Пальчиковые» батарейки, батарейки-«таблетки»,
+        <Text>«Мизинчиковые», «Пальчиковые» батарейки, батарейки-«таблетки»/«бочки»/«дюймовочки»,
         аккумуляторы от телефонов, ноутбуков и т.п. (не везде)
         </Text>
 
